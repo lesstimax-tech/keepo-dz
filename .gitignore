@@ -1,0 +1,12 @@
+js/config.js
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.log
+
+# Cache / temp (ne pas versionner)
+.wrangler/
+supabase/.temp/
+.claude/settings.local.json
+.claude/marble.cmd

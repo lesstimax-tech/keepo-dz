@@ -1,0 +1,80 @@
+/* ══════════════════════════════════════════════════════════════════
+   KEEPO — Ajustements RTL (arabe)
+   Activés automatiquement par le moteur i18n via <html dir="rtl" lang="ar">.
+   Police arabe : Cairo / Tajawal (chargées dans le <head> de la page).
+   ══════════════════════════════════════════════════════════════════ */
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+/* Police arabe pour tout le texte, y compris les titres
+   (Bricolage Grotesque / Instrument Sans n'ont pas de glyphes arabes) */
+html[lang="ar"] body,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] p,
+html[lang="ar"] a,
+html[lang="ar"] span,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select,
+html[lang="ar"] label,
+html[lang="ar"] li {
+  font-family: "Cairo", "Tajawal", "Segoe UI", system-ui, sans-serif !important;
+  letter-spacing: 0 !important; /* le letter-spacing latin casse l'arabe */
+}
+
+/* Alignement du texte à droite par défaut */
+html[dir="rtl"] body,
+html[dir="rtl"] .hero-sub,
+html[dir="rtl"] .section-sub,
+html[dir="rtl"] p,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] li {
+  text-align: right;
+}
+
+/* Les éléments centrés le restent */
+html[dir="rtl"] .section-head,
+html[dir="rtl"] .section-title,
+html[dir="rtl"] [style*="text-align:center"],
+html[dir="rtl"] [style*="text-align: center"] {
+  text-align: center;
+}
+
+/* Icônes / flèches directionnelles : on inverse le sens */
+html[dir="rtl"] .hero-ctas .icon,
+html[dir="rtl"] .btn .icon {
+  transform: scaleX(-1);
+}
+
+/* Le bouton de langue reste en bas à gauche en RTL (miroir logique via inset-inline) */
+/* géré par inset-inline-end dans keepo-i18n.js — rien à faire ici */
+
+/* Petites listes à puces / retraits directionnels courants */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol {
+  padding-right: 1.2em;
+  padding-left: 0;
+}
+
+/* Champs de formulaire : le texte saisi part de la droite */
+html[dir="rtl"] input,
+html[dir="rtl"] textarea {
+  text-align: right;
+}
+/* …sauf email / mot de passe / téléphone qui restent LTR (plus lisibles) */
+html[dir="rtl"] input[type="email"],
+html[dir="rtl"] input[type="password"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] input[type="url"] {
+  direction: ltr;
+  text-align: right;
+}

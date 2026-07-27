@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "KEEPO-static",
+      "runtimeExecutable": "E:\\Keepo\\.claude\\serve.cmd",
+      "runtimeArgs": [],
+      "port": 3000
+    }
+  ]
+}

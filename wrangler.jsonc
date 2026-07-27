@@ -1,0 +1,18 @@
+﻿{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "keepo-dz",
+  "main": "_worker.js",
+  "compatibility_date": "2026-05-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+  // Aucune clé secrète ici : RESEND_API_KEY, STRIPE_*, SUPABASE_SERVICE_ROLE et
+  // GEMINI_API_KEY sont gérés via `npx wrangler secret put <NOM>` (jamais en clair).
+}
