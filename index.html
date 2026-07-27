@@ -40,8 +40,7 @@
   "url": "https://keepo-dz.com/",
   "description": "Le programme de fidélité clé en main pour les commerces indépendants : points, cartes à tampons et récompenses dans le téléphone de vos clients. Aucun matériel requis, mise en place en 2 minutes.",
   "offers": [
-    { "@type": "Offer", "name": "Essentiel", "price": "49.00", "priceCurrency": "EUR" },
-    { "@type": "Offer", "name": "Pro", "price": "99.00", "priceCurrency": "EUR" }
+    { "@type": "Offer", "name": "KEEPO Pro", "price": "3000.00", "priceCurrency": "DZD" }
   ]
 }
 </script>
@@ -591,20 +590,20 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
         <svg class="icon" style="font-size:13px;color:var(--teal-deep)"><use href="#i-arrow"/></svg>
       </a>
       <h1 id="hero-title" data-i18n-html="hero.title">Offrez à votre commerce un vrai <span class="grad-text">programme de fidélité</span>.</h1>
-      <p class="hero-sub" data-i18n-html="hero.sub">Bouchers, coiffeurs, restaurateurs, cavistes… Donnez à vos clients les avantages des grandes enseignes — points, cartes à tampons, récompenses — directement dans leur téléphone. Et <strong>récupérez leur nom et leur e-mail dès la première visite</strong>.</p>
+      <p class="hero-sub" data-i18n-html="hero.sub">Bouchers, coiffeurs, restaurateurs, boulangers… Donnez à vos clients les avantages des grandes enseignes — points, cartes à tampons, récompenses — directement dans leur téléphone. Et <strong>récupérez leur nom et leur e-mail dès la première visite</strong>.</p>
       <div class="hero-ctas">
         <a href="connexion.html" class="btn btn-grad"><span data-i18n="hero.cta_start">Démarrer l'essai gratuit</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
         <a href="demo.html" class="btn btn-ghost" data-i18n="hero.cta_demo">Essayer la démo</a>
       </div>
       <div class="hero-proof">
         <span><svg class="icon"><use href="#i-check"/></svg> <span data-i18n="hero.proof_2min">Prêt en 2 minutes</span></span>
-        <span><svg class="icon"><use href="#i-check"/></svg> Sans matériel</span>
-        <span><svg class="icon"><use href="#i-check"/></svg> 14 jours d'essai — 0&nbsp;€ aujourd'hui</span>
+        <span><svg class="icon"><use href="#i-check"/></svg> <span data-i18n="hero.proof_nomat">Sans matériel</span></span>
+        <span><svg class="icon"><use href="#i-check"/></svg> <span data-i18n="hero.proof_trial">14 jours d'essai — 0 DZD aujourd'hui</span></span>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><div class="n">2 min</div><div class="l">pour tout configurer</div></div>
-        <div class="hstat"><div class="n">0 €</div><div class="l">de matériel à acheter</div></div>
-        <div class="hstat"><div class="n">14 j</div><div class="l">d'essai offert, 0 € aujourd'hui</div></div>
+        <div class="hstat"><div class="n">2 min</div><div class="l" data-i18n="hero.stat1_l">pour tout configurer</div></div>
+        <div class="hstat"><div class="n">0 DZD</div><div class="l" data-i18n="hero.stat2_l">de matériel à acheter</div></div>
+        <div class="hstat"><div class="n">14 j</div><div class="l" data-i18n="hero.stat3_l">d'essai offert, 0 DZD aujourd'hui</div></div>
       </div>
     </div>
 
@@ -616,11 +615,11 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
           <div class="p-avatar"></div>
         </div>
         <div class="p-card">
-          <span class="p-chip">Carte Privilège</span>
-          <div class="p-shop">Café des Artisans</div>
-          <div class="p-pts">340<small>points</small></div>
+          <span class="p-chip" data-i18n="ph.chip">Carte Privilège</span>
+          <div class="p-shop" data-i18n="ph.shop">Café des Artisans</div>
+          <div class="p-pts">340<small data-i18n="ph.pts">points</small></div>
           <div class="p-bar"><i></i></div>
-          <div class="p-next">Plus que <b>60 pts</b> → 1 boisson offerte</div>
+          <div class="p-next" data-i18n-html="ph.next">Plus que <b>60 pts</b> → 1 boisson offerte</div>
           <div class="p-foot">
             <div class="p-qr">
               <span></span><span class="o"></span><span></span><span></span><span class="o"></span>
@@ -629,17 +628,17 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
               <span class="o"></span><span></span><span class="o"></span><span></span><span class="o"></span>
               <span></span><span></span><span class="o"></span><span></span><span></span>
             </div>
-            <div class="p-scan"><b>Présentez ce code</b>à votre commerçant pour cumuler vos points</div>
+            <div class="p-scan" data-i18n-html="ph.scan"><b>Présentez ce code</b>à votre commerçant pour cumuler vos points</div>
           </div>
         </div>
       </div>
       <div class="chip-float chip-a">
-        <span class="n">0 €</span>
-        <span class="t">gratuit<br>pour vos clients</span>
+        <span class="n">0 DZD</span>
+        <span class="t" data-i18n-html="ph.free">gratuit<br>pour vos clients</span>
       </div>
       <div class="chip-float chip-b">
         <span class="ok">✓</span>
-        <span class="t"><b>+1 tampon crédité</b><span>Café des Artisans · à l'instant</span></span>
+        <span class="t" data-i18n-html="ph.stamp"><b>+1 tampon crédité</b><span>Café des Artisans · à l'instant</span></span>
       </div>
     </div>
   </div>
@@ -648,10 +647,10 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <!-- ════════ BANDE DE CONFIANCE ════════ -->
 <div class="trust" role="presentation">
   <div class="trust-row">
-    <span><svg class="icon"><use href="#i-shield"/></svg> 100% conforme RGPD</span>
-    <span><svg class="icon"><use href="#i-fr"/></svg> Conçu pour les commerçants français</span>
-    <span><svg class="icon"><use href="#i-phone"/></svg> Aucun matériel — votre smartphone suffit</span>
-    <span><svg class="icon"><use href="#i-euro"/></svg> ROI positif dès 8 clients fidèles</span>
+    <span><svg class="icon"><use href="#i-shield"/></svg> <span data-i18n="trust.data">Vos données 100% protégées</span></span>
+    <span><svg class="icon"><use href="#i-check"/></svg> <span data-i18n="trust.local">Conçu pour les commerçants algériens</span></span>
+    <span><svg class="icon"><use href="#i-phone"/></svg> <span data-i18n="trust.nomat">Aucun matériel — votre smartphone suffit</span></span>
+    <span><svg class="icon"><use href="#i-chart"/></svg> <span data-i18n="trust.roi">Rentable dès 8 clients fidèles</span></span>
   </div>
 </div>
 
@@ -659,42 +658,42 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section id="features" aria-labelledby="features-title">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="eyebrow">Fonctionnalités</div>
-      <h2 id="features-title">Tout ce qu'il faut.<br>Rien de superflu.</h2>
-      <p>Pensé pour le comptoir, pas pour les informaticiens. Trois briques simples qui travaillent ensemble.</p>
+      <div class="eyebrow" data-i18n="nav.features">Fonctionnalités</div>
+      <h2 id="features-title" data-i18n-html="feat.title">Tout ce qu'il faut.<br>Rien de superflu.</h2>
+      <p data-i18n="feat.sub">Pensé pour le comptoir, pas pour les informaticiens. Trois briques simples qui travaillent ensemble.</p>
     </div>
     <div class="feat-grid">
       <article class="feat rv d1">
         <div class="feat-ico"><svg class="icon"><use href="#i-qr"/></svg></div>
-        <h3>La carte, toujours dans leur poche</h3>
-        <p>Fini la carte introuvable au fond du sac : votre client ouvre KEEPO depuis son écran d'accueil et présente son QR code personnel.</p>
+        <h3 data-i18n="feat1.t">La carte, toujours dans leur poche</h3>
+        <p data-i18n="feat1.p">Fini la carte introuvable au fond du sac : votre client ouvre KEEPO depuis son écran d'accueil et présente son QR code personnel.</p>
         <ul>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Aucune application à télécharger</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Raccourci magique sur l'écran d'accueil</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Points ou carte à tampons, au choix</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Apple Wallet &amp; Google Pay<span class="tag-soon">BIENTÔT</span></span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat1.l1">Aucune application à télécharger</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat1.l2">Raccourci magique sur l'écran d'accueil</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat1.l3">Points ou carte à tampons, au choix</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span><span data-i18n="feat1.l4">Apple Wallet &amp; Google Pay</span><span class="tag-soon" data-i18n="tag.soon">BIENTÔT</span></span></li>
         </ul>
       </article>
       <article class="feat rv d2">
         <div class="feat-ico"><svg class="icon"><use href="#i-bolt"/></svg></div>
-        <h3>Vous scannez, en une seconde</h3>
-        <p>Votre propre smartphone (ou celui de votre équipe) devient le scanner. Vous flashez le code du client : ses points sont crédités instantanément.</p>
+        <h3 data-i18n="feat2.t">Vous scannez, en une seconde</h3>
+        <p data-i18n="feat2.p">Votre propre smartphone (ou celui de votre équipe) devient le scanner. Vous flashez le code du client : ses points sont crédités instantanément.</p>
         <ul>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Aucun risque de triche — c'est vous qui scannez</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Notification immédiate côté client</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Mode caisse tablette, protégé par PIN<span class="tag-pro">PRO</span></span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Multi-serveurs pour toute l'équipe<span class="tag-pro">PRO</span></span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat2.l1">Aucun risque de triche — c'est vous qui scannez</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat2.l2">Notification immédiate côté client</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span><span data-i18n="feat2.l3">Mode caisse tablette, protégé par PIN</span><span class="tag-pro" data-i18n="tag.pro">PRO</span></span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span><span data-i18n="feat2.l4">Multi-serveurs pour toute l'équipe</span><span class="tag-pro" data-i18n="tag.pro">PRO</span></span></li>
         </ul>
       </article>
       <article class="feat rv d3">
         <div class="feat-ico"><svg class="icon"><use href="#i-chart"/></svg></div>
-        <h3>Chaque scan enrichit votre fichier client</h3>
-        <p>Nom, e-mail, visites, habitudes : votre tableau de bord vous dit qui sont vos meilleurs clients — et comment les faire revenir.</p>
+        <h3 data-i18n="feat3.t">Chaque scan enrichit votre fichier client</h3>
+        <p data-i18n="feat3.p">Nom, e-mail, visites, habitudes : votre tableau de bord vous dit qui sont vos meilleurs clients — et comment les faire revenir.</p>
         <ul>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Suivi automatique des visites</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Historique complet des transactions</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Statistiques avancées &amp; prédictives<span class="tag-pro">PRO</span></span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Export complet du fichier clients (RGPD)<span class="tag-pro">PRO</span></span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat3.l1">Suivi automatique des visites</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="feat3.l2">Historique complet des transactions</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span><span data-i18n="feat3.l3">Statistiques avancées &amp; prédictives</span><span class="tag-pro" data-i18n="tag.pro">PRO</span></span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span><span data-i18n="feat3.l4">Export complet du fichier clients</span><span class="tag-pro" data-i18n="tag.pro">PRO</span></span></li>
         </ul>
       </article>
     </div>
@@ -705,45 +704,45 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section class="mkt" id="marketing" aria-labelledby="mkt-title">
   <div class="wrap">
     <div class="rv">
-      <div class="mkt-badge"><svg class="icon" style="font-size:14px"><use href="#i-bolt"/></svg> Inclus dans KEEPO Pro</div>
-      <h2 id="mkt-title">Le marketing qui ramène vos clients, <span class="grad-text">en pilote automatique</span>.</h2>
-      <p class="mkt-sub">Une carte de fidélité enregistre des points. <strong>KEEPO Pro va beaucoup plus loin</strong> : il relance, récompense et fait revenir vos clients tout seul — pendant que vous tenez votre commerce.</p>
+      <div class="mkt-badge"><svg class="icon" style="font-size:14px"><use href="#i-bolt"/></svg> <span data-i18n="mkt.badge">Inclus dans KEEPO Pro</span></div>
+      <h2 id="mkt-title" data-i18n-html="mkt.title">Le marketing qui ramène vos clients, <span class="grad-text">en pilote automatique</span>.</h2>
+      <p class="mkt-sub" data-i18n-html="mkt.sub">Une carte de fidélité enregistre des points. <strong>KEEPO Pro va beaucoup plus loin</strong> : il relance, récompense et fait revenir vos clients tout seul — pendant que vous tenez votre commerce.</p>
     </div>
     <div class="mkt-grid">
       <article class="mkt-card rv d1">
         <div class="mkt-ico"><svg class="icon"><use href="#i-refresh"/></svg></div>
-        <h3>Relances automatiques</h3>
-        <p>Un client n'est pas revenu depuis 30 jours ? Il reçoit un e-mail personnalisé — sans que vous ne fassiez rien.</p>
+        <h3 data-i18n="mkt.c1t">Relances automatiques</h3>
+        <p data-i18n="mkt.c1p">Un client n'est pas revenu depuis 30 jours ? Il reçoit un e-mail personnalisé — sans que vous ne fassiez rien.</p>
       </article>
       <article class="mkt-card rv d2">
         <div class="mkt-ico"><svg class="icon"><use href="#i-users"/></svg></div>
-        <h3>Parrainage</h3>
-        <p>Vos clients invitent leurs amis : les deux gagnent des points. Le bouche-à-oreille qui se récompense tout seul.</p>
+        <h3 data-i18n="mkt.c2t">Parrainage</h3>
+        <p data-i18n="mkt.c2p">Vos clients invitent leurs amis : les deux gagnent des points. Le bouche-à-oreille qui se récompense tout seul.</p>
       </article>
       <article class="mkt-card rv d3">
         <div class="mkt-ico"><svg class="icon"><use href="#i-cake"/></svg></div>
-        <h3>Cadeau d'anniversaire</h3>
-        <p>Le jour J, votre client reçoit un bonus automatique. La petite attention qui crée l'attachement.</p>
+        <h3 data-i18n="mkt.c3t">Cadeau d'anniversaire</h3>
+        <p data-i18n="mkt.c3p">Le jour J, votre client reçoit un bonus automatique. La petite attention qui crée l'attachement.</p>
       </article>
       <article class="mkt-card rv d1">
         <div class="mkt-ico"><svg class="icon"><use href="#i-wheel"/></svg></div>
-        <h3>Roue de la fortune</h3>
-        <p>Après quelques visites, vos clients tentent leur chance et gagnent un lot. Le jeu qui donne envie de revenir.</p>
+        <h3 data-i18n="mkt.c4t">Roue de la fortune</h3>
+        <p data-i18n="mkt.c4p">Après quelques visites, vos clients tentent leur chance et gagnent un lot. Le jeu qui donne envie de revenir.</p>
       </article>
       <article class="mkt-card rv d2">
         <div class="mkt-ico"><svg class="icon"><use href="#i-crown"/></svg></div>
-        <h3>Niveaux VIP</h3>
-        <p>Vos meilleurs clients montent en niveau et débloquent des avantages exclusifs. Le statut qui fidélise.</p>
+        <h3 data-i18n="mkt.c5t">Niveaux VIP</h3>
+        <p data-i18n="mkt.c5p">Vos meilleurs clients montent en niveau et débloquent des avantages exclusifs. Le statut qui fidélise.</p>
       </article>
       <article class="mkt-card rv d3">
         <div class="mkt-ico"><svg class="icon"><use href="#i-star"/></svg></div>
-        <h3>Avis Google automatiques</h3>
-        <p>Quelques minutes après l'achat, vos clients satisfaits sont invités à vous noter. Votre réputation grandit seule.</p>
+        <h3 data-i18n="mkt.c6t">Avis Google automatiques</h3>
+        <p data-i18n="mkt.c6p">Quelques minutes après l'achat, vos clients satisfaits sont invités à vous noter. Votre réputation grandit seule.</p>
       </article>
     </div>
     <div class="mkt-foot rv">
-      <p>＋ <strong>Campagnes e-mail</strong> vers tout votre fichier client en un clic, et automatisations sur-mesure.</p>
-      <a href="connexion.html" class="btn btn-grad">Activer le marketing Pro <svg class="icon"><use href="#i-arrow"/></svg></a>
+      <p data-i18n-html="mkt.foot">＋ <strong>Campagnes e-mail</strong> vers tout votre fichier client en un clic, et automatisations sur-mesure.</p>
+      <a href="connexion.html" class="btn btn-grad"><span data-i18n="mkt.cta">Activer le marketing Pro</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -752,25 +751,25 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section id="how" aria-labelledby="how-title">
   <div class="wrap">
     <div class="sec-head center rv">
-      <div class="eyebrow">Comment ça marche</div>
-      <h2 id="how-title">En caisse demain matin</h2>
-      <p>Pas d'installation, pas de formation, pas de matériel. Trois étapes et c'est parti.</p>
+      <div class="eyebrow" data-i18n="how.eyebrow">Comment ça marche</div>
+      <h2 id="how-title" data-i18n="how.title">En caisse demain matin</h2>
+      <p data-i18n="how.sub">Pas d'installation, pas de formation, pas de matériel. Trois étapes et c'est parti.</p>
     </div>
     <div class="steps">
       <article class="step rv d1">
         <div class="num">1</div>
-        <h3>Créez votre carte en 2 minutes</h3>
-        <p>Nom, couleurs, récompenses : choisissez points ou tampons, fixez le palier (« 10 cafés = 1 offert ») et c'est prêt.</p>
+        <h3 data-i18n="how.s1t">Créez votre carte en 2 minutes</h3>
+        <p data-i18n="how.s1p">Nom, couleurs, récompenses : choisissez points ou tampons, fixez le palier (« 10 cafés = 1 offert ») et c'est prêt.</p>
       </article>
       <article class="step rv d2">
         <div class="num">2</div>
-        <h3>Vos clients scannent le QR du comptoir</h3>
-        <p>Leur carte apparaît dans leur téléphone — et vous, vous récupérez leur nom et leur e-mail dès la première visite.</p>
+        <h3 data-i18n="how.s2t">Vos clients scannent le QR du comptoir</h3>
+        <p data-i18n="how.s2p">Leur carte apparaît dans leur téléphone — et vous, vous récupérez leur nom et leur e-mail dès la première visite.</p>
       </article>
       <article class="step rv d3">
         <div class="num">3</div>
-        <h3>Scannez, récompensez, fidélisez</h3>
-        <p>Chaque passage crédite des points en un scan. Et le marketing Pro fait revenir vos clients, automatiquement.</p>
+        <h3 data-i18n="how.s3t">Scannez, récompensez, fidélisez</h3>
+        <p data-i18n="how.s3p">Chaque passage crédite des points en un scan. Et le marketing Pro fait revenir vos clients, automatiquement.</p>
       </article>
     </div>
   </div>
@@ -780,17 +779,17 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section class="results" aria-labelledby="res-title">
   <div class="wrap">
     <div class="sec-head center rv">
-      <div class="eyebrow">Le calcul</div>
-      <h2 id="res-title">Rentabilisé dès quelques clients fidèles</h2>
-      <p>Pas besoin de miracle : il suffit que quelques clients reviennent un peu plus souvent.</p>
+      <div class="eyebrow" data-i18n="res.eyebrow">Le calcul</div>
+      <h2 id="res-title" data-i18n="res.title">Rentabilisé dès quelques clients fidèles</h2>
+      <p data-i18n="res.sub">Pas besoin de miracle : il suffit que quelques clients reviennent un peu plus souvent.</p>
     </div>
     <div class="res-grid">
-      <div class="res rv d1"><div class="n">2 min</div><div class="l">pour créer votre carte</div></div>
-      <div class="res rv d2"><div class="n">0 €</div><div class="l">de matériel ou d'installation</div></div>
-      <div class="res rv d3"><div class="n">1 scan</div><div class="l">pour cumuler et fidéliser</div></div>
-      <div class="res rv d4"><div class="n">8</div><div class="l">clients fidèles suffisent à le rentabiliser</div></div>
+      <div class="res rv d1"><div class="n">2 min</div><div class="l" data-i18n="res.r1l">pour créer votre carte</div></div>
+      <div class="res rv d2"><div class="n">0 DZD</div><div class="l" data-i18n="res.r2l">de matériel ou d'installation</div></div>
+      <div class="res rv d3"><div class="n">1 scan</div><div class="l" data-i18n="res.r3l">pour cumuler et fidéliser</div></div>
+      <div class="res rv d4"><div class="n">8</div><div class="l" data-i18n="res.r4l">clients fidèles suffisent à le rentabiliser</div></div>
     </div>
-    <p class="res-note rv">Le calcul est simple : <b>8 clients</b> qui reviennent une fois de plus chaque mois avec un panier de 15&nbsp;€ couvrent largement l'abonnement Pro. Tout le reste, c'est du gain.</p>
+    <p class="res-note rv" data-i18n-html="res.note">Le calcul est simple : <b>8 clients</b> qui reviennent une fois de plus chaque mois avec un panier de 2 000 DZD couvrent largement l'abonnement Pro. Tout le reste, c'est du gain.</p>
   </div>
 </section>
 
@@ -798,22 +797,22 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section id="avis" aria-labelledby="avis-title">
   <div class="wrap">
     <div class="sec-head center rv">
-      <div class="eyebrow">Nouveau</div>
-      <h2 id="avis-title">Soyez parmi les premiers</h2>
-      <p>KEEPO démarre auprès des commerces indépendants. En rejoignant maintenant, vous prenez une longueur d'avance — et vous êtes accompagné de près.</p>
+      <div class="eyebrow" data-i18n="avis.eyebrow">Nouveau</div>
+      <h2 id="avis-title" data-i18n="avis.title">Soyez parmi les premiers</h2>
+      <p data-i18n="avis.sub">KEEPO démarre auprès des commerces indépendants. En rejoignant maintenant, vous prenez une longueur d'avance — et vous êtes accompagné de près.</p>
     </div>
     <div class="tst-grid">
       <article class="tst rv d1">
         <div style="font-size:30px;margin-bottom:14px;">🤝</div>
-        <p><strong style="font-family:var(--font-d);font-size:16px;color:var(--ink);display:block;margin-bottom:8px;">Accompagnement direct</strong>KEEPO est porté par son fondateur, pas par un centre d'appels. On configure votre carte avec vous, et on répond vite.</p>
+        <p><strong style="font-family:var(--font-d);font-size:16px;color:var(--ink);display:block;margin-bottom:8px;" data-i18n="avis.c1t">Accompagnement direct</strong><span data-i18n="avis.c1p">KEEPO est porté par son fondateur, pas par un centre d'appels. On configure votre carte avec vous, et on répond vite.</span></p>
       </article>
       <article class="tst rv d2">
         <div style="font-size:30px;margin-bottom:14px;">📍</div>
-        <p><strong style="font-family:var(--font-d);font-size:16px;color:var(--ink);display:block;margin-bottom:8px;">Pensé pour le commerce local</strong>Un outil simple, fait pour le comptoir : sans matériel, sans jargon, prêt en quelques minutes.</p>
+        <p><strong style="font-family:var(--font-d);font-size:16px;color:var(--ink);display:block;margin-bottom:8px;" data-i18n="avis.c2t">Pensé pour le commerce local</strong><span data-i18n="avis.c2p">Un outil simple, fait pour le comptoir : sans matériel, sans jargon, prêt en quelques minutes.</span></p>
       </article>
       <article class="tst rv d3">
         <div style="font-size:30px;margin-bottom:14px;">💬</div>
-        <p><strong style="font-family:var(--font-d);font-size:16px;color:var(--ink);display:block;margin-bottom:8px;">Votre avis façonne KEEPO</strong>En arrivant tôt, vos retours orientent les prochaines fonctionnalités. Vous construisez l'outil avec nous.</p>
+        <p><strong style="font-family:var(--font-d);font-size:16px;color:var(--ink);display:block;margin-bottom:8px;" data-i18n="avis.c3t">Votre avis façonne KEEPO</strong><span data-i18n="avis.c3p">En arrivant tôt, vos retours orientent les prochaines fonctionnalités. Vous construisez l'outil avec nous.</span></p>
       </article>
     </div>
   </div>
@@ -823,81 +822,46 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section id="pricing" aria-labelledby="pricing-title" style="padding-top:90px;">
   <div class="wrap">
     <div class="sec-head center rv">
-      <div class="eyebrow">Tarifs</div>
-      <h2 id="pricing-title">Un tarif simple, sans engagement</h2>
-      <p>14 jours d'essai complet · 0&nbsp;€ aujourd'hui · sans engagement, résiliable en 1 clic.</p>
+      <div class="eyebrow" data-i18n="pricing.eyebrow">Tarifs</div>
+      <h2 id="pricing-title" data-i18n="pricing.title">Un tarif simple, sans engagement</h2>
+      <p data-i18n="pricing.sub">14 jours d'essai complet · 0 DZD aujourd'hui · sans engagement, résiliable en 1 clic.</p>
     </div>
 
-    <div style="text-align:center" class="rv">
-      <div class="bill-toggle" role="group" aria-label="Périodicité de facturation">
-        <button type="button" id="bm" class="on" aria-pressed="true">Mensuel</button>
-        <button type="button" id="by" aria-pressed="false">Annuel <span class="save">jusqu'à −25%</span></button>
-      </div>
+    <style>
+      .dur-selector .dur-btn{border:1px solid #dbe6e7;background:#fff;border-radius:100px;padding:8px 15px;font:inherit;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s ease;}
+      .dur-selector .dur-btn:hover{border-color:#16B8C4;color:#0E7C8C;}
+      .dur-selector .dur-btn.on{background:linear-gradient(135deg,#16B8C4,#0E9AA6);border-color:transparent;color:#fff;}
+    </style>
+    <div class="dur-selector rv" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;">
+      <button type="button" class="dur-btn" data-months="1"  onclick="setPlan(1)" data-i18n="pricing.d1">1 mois</button>
+      <button type="button" class="dur-btn" data-months="3"  onclick="setPlan(3)" data-i18n="pricing.d3">3 mois · −5%</button>
+      <button type="button" class="dur-btn" data-months="6"  onclick="setPlan(6)" data-i18n="pricing.d6">6 mois · −10%</button>
+      <button type="button" class="dur-btn" data-months="12" onclick="setPlan(12)" data-i18n="pricing.d12">12 mois · −15%</button>
     </div>
 
-    <div class="price-grid">
-      <article class="plan rv d1">
-        <h3>Essentiel</h3>
-        <p class="for">Pour lancer la fidélité dans votre boutique</p>
-        <div class="price-row"><span class="price" id="p-ess">49€</span><span class="per" id="per-ess">/mois</span></div>
-        <p class="bill-note" id="note-ess">Facturation mensuelle, sans engagement</p>
-        <ul>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Jusqu'à 150 clients actifs</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Points <b>et</b> cartes à tampons</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Scanner QR sur votre smartphone</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Tableau de bord &amp; fichier client</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>QR de comptoir HD inclus</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Passage en Pro en 1 clic</span></li>
-        </ul>
-        <a href="connexion.html" class="btn btn-ghost">Démarrer avec Essentiel</a>
-        <p class="plan-foot">14 jours d'essai · 0&nbsp;€ aujourd'hui</p>
-      </article>
-
-      <article class="plan hot rv d2">
-        <div class="plan-pop">⭐ Recommandé par les commerçants</div>
+    <div class="price-grid" style="justify-content:center;">
+      <article class="plan hot rv" style="max-width:460px;">
+        <div class="plan-pop">⭐ <span data-i18n="pricing.pop">Recommandé par les commerçants</span></div>
         <h3>KEEPO Pro</h3>
-        <p class="for">Pour faire revenir vos clients en automatique</p>
-        <div class="price-row"><span class="price grad-text" id="p-pro">99€</span><span class="per" id="per-pro">/mois</span></div>
-        <p class="bill-note" id="note-pro">Facturation mensuelle, sans engagement</p>
+        <p class="for" data-i18n="pricing.for">Tout débloqué pour faire revenir vos clients</p>
+        <div class="price-row"><span class="price grad-text" id="p-amount">3 000</span><span class="per" id="p-per"> DZD/mois</span></div>
+        <p class="bill-note" id="p-note">Payé au mois · sans engagement</p>
         <ul>
-          <li><svg class="icon"><use href="#i-check"/></svg><span><b>Programme marketing complet</b> : relances, parrainage, anniversaires, roue, VIP</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span><b>Clients &amp; scans illimités</b></span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Campagnes e-mail vers votre fichier client</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Statistiques avancées &amp; prédictives</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Mode caisse + multi-serveurs (équipe)</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Export fichier clients (RGPD)</span></li>
-          <li><svg class="icon"><use href="#i-check"/></svg><span>Support VIP 7j/7</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc1">Membres fidèles illimités</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc2">Programme marketing complet (relances, roue, VIP…)</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc3">Toutes les fonctions IA</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc4">Analytics premium temps réel</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc5">Mode caisse + multi-caissiers</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc6">Studio Design Card (cartes personnalisées)</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc7">Export CSV illimité</span></li>
+          <li><svg class="icon"><use href="#i-check"/></svg><span data-i18n="pricing.inc8">Support prioritaire</span></li>
         </ul>
-        <a href="connexion.html" class="btn btn-grad">Lancer l'essai Pro gratuit <svg class="icon"><use href="#i-arrow"/></svg></a>
-        <p class="plan-foot">14 jours d'essai · 0&nbsp;€ aujourd'hui · résiliable en 1 clic</p>
+        <a href="connexion.html" class="btn btn-grad"><span data-i18n="hero.cta_start">Démarrer l'essai gratuit</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <p class="plan-foot" data-i18n="pricing.pay">🔒 Paiement sécurisé via Chargily · CIB &amp; EDAHABIA</p>
       </article>
     </div>
 
-    <!-- Comparatif -->
-    <div class="cmp-wrap rv">
-      <div class="cmp-scroll">
-        <table class="cmp">
-          <thead>
-            <tr>
-              <th scope="col">Fonctionnalité</th>
-              <th scope="col">Essentiel<small>49€/mois ou 499€/an</small></th>
-              <th scope="col" class="col-pro">KEEPO Pro<small>99€/mois ou 890€/an</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Clients actifs</td><td>150 max</td><td class="col-pro yes">Illimités</td></tr>
-            <tr><td>Scans par mois</td><td>300 max</td><td class="col-pro yes">Illimités</td></tr>
-            <tr><td>Points &amp; cartes à tampons</td><td class="yes"><svg class="icon"><use href="#i-check"/></svg></td><td class="col-pro yes"><svg class="icon"><use href="#i-check"/></svg></td></tr>
-            <tr><td>Programme marketing automatisé<br><small style="color:var(--muted);font-weight:400">relances, parrainage, roue, VIP…</small></td><td class="no">—</td><td class="col-pro yes"><svg class="icon"><use href="#i-check"/></svg></td></tr>
-            <tr><td>Tableau de bord</td><td>Basique</td><td class="col-pro yes">Avancé + prédictif</td></tr>
-            <tr><td>Mode caisse &amp; multi-serveurs</td><td class="no">—</td><td class="col-pro yes"><svg class="icon"><use href="#i-check"/></svg></td></tr>
-            <tr><td>Export fichier clients (RGPD)</td><td class="no">—</td><td class="col-pro yes"><svg class="icon"><use href="#i-check"/></svg></td></tr>
-            <tr><td>Apple Wallet &amp; Google Pay</td><td class="no">—</td><td class="col-pro soon">Bientôt</td></tr>
-            <tr><td>Support</td><td>Chat 5j/7</td><td class="col-pro yes">VIP 7j/7</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <!-- Comparatif retiré (offre unique KEEPO Pro) -->
   </div>
 </section>
 
@@ -905,38 +869,38 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section id="faq" aria-labelledby="faq-title" style="padding-top:80px;">
   <div class="wrap">
     <div class="sec-head center rv">
-      <div class="eyebrow">FAQ</div>
-      <h2 id="faq-title">Les questions qu'on nous pose</h2>
-      <p>Tout le reste, on y répond sur le chat — 7j/7 pour les clients Pro.</p>
+      <div class="eyebrow" data-i18n="faq.eyebrow">FAQ</div>
+      <h2 id="faq-title" data-i18n="faq.title">Les questions qu'on nous pose</h2>
+      <p data-i18n="faq.sub">Tout le reste, on y répond sur le chat — 7j/7 pour les clients Pro.</p>
     </div>
     <div class="faq-list rv">
       <details class="faq">
-        <summary>Mes clients doivent-ils installer une application ?<span class="chev">＋</span></summary>
-        <div class="ans">Non. KEEPO fonctionne directement dans le navigateur du téléphone : vos clients scannent votre QR de comptoir une fois, ajoutent le raccourci sur leur écran d'accueil, et leur carte est <b>toujours à portée de main</b> — sans App Store, sans téléchargement, sans espace de stockage.</div>
+        <summary><span data-i18n="faq.q1">Mes clients doivent-ils installer une application ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a1">Non. KEEPO fonctionne directement dans le navigateur du téléphone : vos clients scannent votre QR de comptoir une fois, ajoutent le raccourci sur leur écran d'accueil, et leur carte est <b>toujours à portée de main</b> — sans App Store, sans téléchargement, sans espace de stockage.</div>
       </details>
       <details class="faq">
-        <summary>Ai-je besoin de matériel (borne, tablette, douchette) ?<span class="chev">＋</span></summary>
-        <div class="ans">Non plus. <b>Votre smartphone suffit</b> pour scanner les cartes de vos clients. Nous vous fournissons un QR de comptoir HD à imprimer. Si vous avez une tablette de caisse, le mode caisse Pro (protégé par code PIN pour votre équipe) s'y installe en 1 minute.</div>
+        <summary><span data-i18n="faq.q2">Ai-je besoin de matériel (borne, tablette, douchette) ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a2">Non plus. <b>Votre smartphone suffit</b> pour scanner les cartes de vos clients. Nous vous fournissons un QR de comptoir HD à imprimer. Si vous avez une tablette de caisse, le mode caisse Pro (protégé par code PIN pour votre équipe) s'y installe en 1 minute.</div>
       </details>
       <details class="faq">
-        <summary>Comment fonctionne l'essai gratuit de 14 jours ?<span class="chev">＋</span></summary>
-        <div class="ans">Vous choisissez votre formule, entrez votre carte et profitez de <b>toutes les fonctionnalités pendant 14 jours sans payer</b> : 0&nbsp;€ aujourd'hui, premier prélèvement uniquement à la fin de l'essai. Vous recevez un rappel avant l'échéance et pouvez <b>annuler en 1 clic</b> à tout moment pendant l'essai — vous ne serez jamais débité.</div>
+        <summary><span data-i18n="faq.q3">Comment fonctionne l'essai gratuit de 14 jours ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a3">Vous profitez de <b>toutes les fonctionnalités gratuitement pendant 14 jours</b> : 0 DZD aujourd'hui. À la fin de l'essai, vous choisissez de continuer en payant via Chargily (carte CIB ou EDAHABIA). <b>Aucun prélèvement automatique</b> — vous ne payez que si vous décidez de continuer.</div>
       </details>
       <details class="faq">
-        <summary>Combien de temps pour démarrer ?<span class="chev">＋</span></summary>
-        <div class="ans"><b>2 minutes, montre en main.</b> Vous créez votre carte (nom, couleurs, récompense), vous imprimez votre QR de comptoir, et votre premier client peut scanner. Aucune formation nécessaire — si vous savez envoyer un SMS, vous savez utiliser KEEPO.</div>
+        <summary><span data-i18n="faq.q4">Combien de temps pour démarrer ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a4"><b>2 minutes, montre en main.</b> Vous créez votre carte (nom, couleurs, récompense), vous imprimez votre QR de comptoir, et votre premier client peut scanner. Aucune formation nécessaire — si vous savez envoyer un SMS, vous savez utiliser KEEPO.</div>
       </details>
       <details class="faq">
-        <summary>Puis-je gérer plusieurs boutiques ?<span class="chev">＋</span></summary>
-        <div class="ans">Oui. KEEPO gère le <b>multi-boutiques</b> : vos clients cumulent leurs points dans n'importe lequel de vos points de vente, et vous suivez chaque boutique depuis le même tableau de bord.</div>
+        <summary><span data-i18n="faq.q5">Puis-je gérer plusieurs boutiques ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a5">Oui. KEEPO gère le <b>multi-boutiques</b> : vos clients cumulent leurs points dans n'importe lequel de vos points de vente, et vous suivez chaque boutique depuis le même tableau de bord.</div>
       </details>
       <details class="faq">
-        <summary>Où sont stockées mes données et celles de mes clients ?<span class="chev">＋</span></summary>
-        <div class="ans">En <b>Europe</b>, conformément au RGPD. Vos données clients vous appartiennent : vous pouvez les exporter à tout moment (offre Pro) et elles ne sont <b>jamais revendues ni partagées</b>. Le paiement est traité par Stripe — vos coordonnées bancaires ne transitent jamais par KEEPO.</div>
+        <summary><span data-i18n="faq.q6">Où sont stockées mes données et celles de mes clients ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a6">Vos données sont <b>en sécurité et vous appartiennent</b> : exportables à tout moment (offre Pro), jamais revendues ni partagées. Le paiement est traité par Chargily — vos coordonnées bancaires ne transitent jamais par KEEPO.</div>
       </details>
       <details class="faq">
-        <summary>Et si je veux résilier ?<span class="chev">＋</span></summary>
-        <div class="ans">Aucun engagement : vous résiliez <b>en 1 clic</b> depuis votre espace, l'abonnement s'arrête à la fin de la période en cours. Vous récupérez votre fichier client avant de partir — il est à vous.</div>
+        <summary><span data-i18n="faq.q7">Et si je veux résilier ?</span><span class="chev">＋</span></summary>
+        <div class="ans" data-i18n-html="faq.a7">Aucun engagement : vous arrêtez simplement de renouveler votre abonnement. Vos données restent conservées et vous récupérez votre fichier client quand vous voulez — il est à vous.</div>
       </details>
     </div>
   </div>
@@ -946,13 +910,13 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
 <section class="final" aria-labelledby="final-title">
   <div class="wrap">
     <div class="final-card rv">
-      <h2 id="final-title">La fidélité n'est plus réservée aux grandes enseignes.</h2>
-      <p>Lancez votre programme de fidélité aujourd'hui et donnez à vos clients une vraie raison de revenir.</p>
+      <h2 id="final-title" data-i18n="final.title">La fidélité n'est plus réservée aux grandes enseignes.</h2>
+      <p data-i18n="final.sub">Lancez votre programme de fidélité aujourd'hui et donnez à vos clients une vraie raison de revenir.</p>
       <div class="final-ctas">
-        <a href="connexion.html" class="btn btn-grad">Démarrer mon essai gratuit <svg class="icon"><use href="#i-arrow"/></svg></a>
-        <a href="demo.html" class="btn btn-ghost">Tester la démo d'abord</a>
+        <a href="connexion.html" class="btn btn-grad"><span data-i18n="final.cta_start">Démarrer mon essai gratuit</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a href="demo.html" class="btn btn-ghost" data-i18n="final.cta_demo">Tester la démo d'abord</a>
       </div>
-      <p class="final-note">Essai 14 jours · 0&nbsp;€ aujourd'hui · Résiliation en 1 clic · Données hébergées en Europe</p>
+      <p class="final-note" data-i18n="final.note">Essai 14 jours · 0 DZD aujourd'hui · Résiliation en 1 clic · Vos données protégées</p>
     </div>
   </div>
 </section>
@@ -965,32 +929,32 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
     <div class="foot-grid">
       <div class="foot-brand">
         <img src="img/logo.png" alt="KEEPO">
-        <p>Le programme de fidélité des commerces indépendants. Simple, beau, automatique.</p>
+        <p data-i18n="foot.brand">Le programme de fidélité des commerces indépendants. Simple, beau, automatique.</p>
         <div class="foot-badges">
-          <span>🇫🇷 Conçu en France</span>
-          <span>🔒 RGPD</span>
-          <span>💳 Paiement Stripe</span>
+          <span data-i18n="foot.badge_dz">🇩🇿 Conçu pour l'Algérie</span>
+          <span data-i18n="foot.badge_secure">🔒 Données protégées</span>
+          <span data-i18n="foot.badge_pay">💳 Paiement Chargily</span>
         </div>
       </div>
       <div class="foot-col">
-        <h4>Produit</h4>
-        <a href="#features">Fonctionnalités</a>
-        <a href="#marketing">Marketing Pro</a>
-        <a href="#pricing">Tarifs</a>
-        <a href="demo.html">Démo interactive</a>
-        <a href="installer.html">Installer l'app</a>
+        <h4 data-i18n="foot.col_product">Produit</h4>
+        <a href="#features" data-i18n="nav.features">Fonctionnalités</a>
+        <a href="#marketing" data-i18n="foot.link_marketing">Marketing Pro</a>
+        <a href="#pricing" data-i18n="nav.pricing">Tarifs</a>
+        <a href="demo.html" data-i18n="foot.link_demo">Démo interactive</a>
+        <a href="installer.html" data-i18n="foot.link_install">Installer l'app</a>
       </div>
       <div class="foot-col">
-        <h4>Ressources</h4>
-        <a href="#faq">FAQ</a>
-        <a href="#avis">Avis clients</a>
-        <a href="connexion.html">Se connecter</a>
-        <a href="connexion.html">Créer un compte</a>
+        <h4 data-i18n="foot.col_resources">Ressources</h4>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#avis" data-i18n="foot.link_reviews">Avis clients</a>
+        <a href="connexion.html" data-i18n="nav.login">Se connecter</a>
+        <a href="connexion.html" data-i18n="account.create">Créer un compte</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 KEEPO — Tous droits réservés.</span>
-      <span>Fait avec soin pour les commerçants indépendants.</span>
+      <span data-i18n="foot.copy">© 2026 KEEPO — Tous droits réservés.</span>
+      <span data-i18n="foot.tagline">Fait avec soin pour les commerçants indépendants.</span>
     </div>
   </div>
 </footer>
@@ -1040,29 +1004,33 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
     rv.forEach(function(el){ el.classList.add("in"); });
   }
 
-  /* Toggle Mensuel / Annuel (affichage uniquement) */
-  var bm = document.getElementById("bm"), by = document.getElementById("by");
-  var P = {
-    month: { ess:"49€", essPer:"/mois", essNote:"Facturation mensuelle, sans engagement",
-             pro:"99€", proPer:"/mois", proNote:"Facturation mensuelle, sans engagement" },
-    year:  { ess:"41,60€", essPer:"/mois", essNote:"Facturé 499€ par an · −15%",
-             pro:"74,20€", proPer:"/mois", proNote:"Facturé 890€ par an · −25% ≈ 3 mois offerts" }
-  };
-  function setBill(mode){
-    var p = P[mode];
-    document.getElementById("p-ess").textContent  = p.ess;
-    document.getElementById("per-ess").textContent = p.essPer;
-    document.getElementById("note-ess").textContent = p.essNote;
-    document.getElementById("p-pro").textContent  = p.pro;
-    document.getElementById("per-pro").textContent = p.proPer;
-    document.getElementById("note-pro").textContent = p.proNote;
-    bm.classList.toggle("on", mode === "month");
-    by.classList.toggle("on", mode === "year");
-    bm.setAttribute("aria-pressed", mode === "month" ? "true" : "false");
-    by.setAttribute("aria-pressed", mode === "year" ? "true" : "false");
+  /* Tarif DZD — sélecteur de durée (affichage, prépayé dégressif) */
+  var PLANS = { 1:{total:3000,disc:0}, 3:{total:8550,disc:5}, 6:{total:16200,disc:10}, 12:{total:30600,disc:15} };
+  var selM = 1;
+  function fmtDZD(n){ return Math.round(n).toLocaleString("fr-FR").replace(/ /g," "); }
+  function setPlan(m){
+    selM = PLANS[m] ? m : 1;
+    document.querySelectorAll(".dur-btn").forEach(function(b){
+      b.classList.toggle("on", parseInt(b.dataset.months, 10) === selM);
+    });
+    var p = PLANS[selM], perMonth = p.total / selM;
+    var ar = (window.KEEPO_getLang && window.KEEPO_getLang() === "ar");
+    var amount = document.getElementById("p-amount");
+    var per = document.getElementById("p-per");
+    var note = document.getElementById("p-note");
+    if (amount) amount.textContent = fmtDZD(p.total);
+    if (per) per.textContent = (selM === 1)
+      ? (ar ? " دج/شهر" : " DZD/mois")
+      : (ar ? (" دج/" + selM + " أشهر") : (" DZD/" + selM + " mois"));
+    if (note) {
+      if (selM === 1) note.textContent = ar ? "يُدفع شهرياً · بدون التزام" : "Payé au mois · sans engagement";
+      else note.textContent = ar
+        ? ("أي " + fmtDZD(perMonth) + " دج/شهر · مدفوع مرة واحدة · −" + p.disc + "%")
+        : ("Soit " + fmtDZD(perMonth) + " DZD/mois · payé en une fois · −" + p.disc + "%");
+    }
   }
-  bm.addEventListener("click", function(){ setBill("month"); });
-  by.addEventListener("click", function(){ setBill("year"); });
+  window.addEventListener("keepo:lang", function(){ setPlan(selM); });
+  setPlan(1);
 
   /* FAQ : une seule ouverte à la fois */
   var faqs = document.querySelectorAll(".faq");
@@ -1092,7 +1060,7 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
     {
       "@type": "Question",
       "name": "Comment fonctionne l'essai gratuit de 14 jours ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Vous choisissez votre formule et profitez de toutes les fonctionnalités pendant 14 jours sans payer : 0 € aujourd'hui, premier prélèvement à la fin de l'essai. Annulation en 1 clic à tout moment pendant l'essai." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Vous profitez de toutes les fonctionnalités pendant 14 jours sans payer : 0 DZD aujourd'hui. À la fin de l'essai, vous choisissez de continuer en payant via Chargily (CIB ou EDAHABIA). Aucun prélèvement automatique." }
     },
     {
       "@type": "Question",
@@ -1107,7 +1075,7 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
     {
       "@type": "Question",
       "name": "Où sont stockées mes données et celles de mes clients ?",
-      "acceptedAnswer": { "@type": "Answer", "text": "En Europe, conformément au RGPD. Vos données vous appartiennent : exportables à tout moment, jamais revendues. Le paiement est traité par Stripe." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Vos données sont en sécurité et vous appartiennent : exportables à tout moment, jamais revendues. Le paiement est traité par Chargily (CIB et EDAHABIA)." }
     },
     {
       "@type": "Question",
