@@ -299,7 +299,23 @@
     "Générer le design": "توليد التصميم",
     "Appliquer ces couleurs": "تطبيق هذه الألوان",
     "Valider + Points": "تأكيد + نقاط",
-    "Contacter le Support Premium": "الاتصال بالدعم المميّز"
+    "Contacter le Support Premium": "الاتصال بالدعم المميّز",
+    // ── Dashboard client ──
+    "Cartes": "البطاقات",
+    "Scanner": "مسح",
+    "Profil": "الملف الشخصي",
+    "Mes Cartes": "بطاقاتي",
+    "Scanner un comptoir": "مسح منضدة تاجر",
+    "Mon Profil": "ملفي الشخصي",
+    "Voir mon profil": "عرض ملفي الشخصي",
+    "Aucune carte": "لا توجد بطاقة",
+    "Aucune récompense": "لا توجد مكافأة",
+    "Aucune transaction": "لا توجد معاملة",
+    "Points": "نقاط",
+    "points": "نقاط",
+    "Voir": "عرض",
+    "Enregistré": "تم الحفظ",
+    "Copié !": "تم النسخ!"
   };
   if (window.KEEPO_AR_EXTRA && typeof window.KEEPO_AR_EXTRA === "object") Object.assign(AR_MAP, window.KEEPO_AR_EXTRA);
   window.KEEPO_AR_MAP = AR_MAP;
