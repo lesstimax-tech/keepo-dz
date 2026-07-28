@@ -31,15 +31,8 @@ drop policy if exists "profiles_merchant_read_members"  on public.profiles;
 create policy "profiles_select_own" on public.profiles
   for select using (auth.uid() = id);
 
--- Un commerçant peut lire le profil de ses membres (pour la caisse)
-create policy "profiles_merchant_read_members" on public.profiles
-  for select using (
-    exists (
-      select 1 from public.loyalty_balances lb
-      where lb.client_id = id
-        and lb.merchant_id = auth.uid()
-    )
-  );
+-- (La policy "profiles_merchant_read_members" est définie EN FIN DE FICHIER,
+--  car elle référence la table loyalty_balances créée plus bas.)
 
 create policy "profiles_update_own" on public.profiles
   for update using (auth.uid() = id)
@@ -48,47 +41,9 @@ create policy "profiles_update_own" on public.profiles
 create policy "profiles_insert_any" on public.profiles
   for insert with check (auth.uid() = id);
 
--- ── TRIGGER : créer le profil à l'inscription ─────────
-create or replace function public.handle_new_user()
-returns trigger language plpgsql security definer set search_path = public as $$
-declare
-  v_role     text := coalesce(nullif(new.raw_user_meta_data->>'role', ''), 'client');
-  v_ref_code text := nullif(upper(trim(new.raw_user_meta_data->>'ref_code')), '');
-  v_referrer uuid;
-begin
-  insert into public.profiles (id, name, email, role, plan, referral_code)
-  values (
-    new.id,
-    coalesce(new.raw_user_meta_data->>'name', new.raw_user_meta_data->>'full_name', 'Utilisateur'),
-    new.email,
-    v_role,
-    coalesce(nullif(new.raw_user_meta_data->>'plan', ''), 'essential'),
-    -- Code de parrainage unique pour les commerçants (dérivé de l'id → jamais de collision)
-    case when v_role = 'commercant' then upper(substr(md5(new.id::text), 1, 8)) else null end
-  )
-  on conflict (id) do nothing;
-
-  -- Parrainage commerçant : si un code de parrain valide accompagne l'inscription,
-  -- on enregistre le lien (statut 'pending' — la récompense est versée au 1er paiement).
-  if v_role = 'commercant' and v_ref_code is not null then
-    select id into v_referrer from public.profiles
-      where referral_code = v_ref_code and role = 'commercant' and id <> new.id
-      limit 1;
-    if v_referrer is not null then
-      insert into public.merchant_referrals (referrer_id, referred_id, status)
-      values (v_referrer, new.id, 'pending')
-      on conflict (referred_id) do nothing;
-    end if;
-  end if;
-
-  return new;
-end;
-$$;
-
-drop trigger if exists on_auth_user_created on auth.users;
-create trigger on_auth_user_created
-  after insert on auth.users
-  for each row execute function public.handle_new_user();
+-- (La fonction handle_new_user() + son trigger sont définis EN FIN DE FICHIER,
+--  car ils référencent la colonne profiles.referral_code et la table
+--  merchant_referrals créées plus bas.)
 
 -- ── CARTES COMMERÇANT ─────────────────────────────────
 create table if not exists public.merchant_cards (
@@ -1216,3 +1171,62 @@ language sql security definer set search_path = public stable as $$
   order by r.created_at desc;
 $$;
 grant execute on function public.get_my_referrals() to authenticated;
+
+-- ════════════════════════════════════════════════════════
+--  OBJETS DÉPLACÉS EN FIN DE FICHIER (dépendances d'ordre)
+--  Définis ici car ils référencent des tables/colonnes créées
+--  plus haut dans le fichier (loyalty_balances, merchant_referrals,
+--  profiles.referral_code).
+-- ════════════════════════════════════════════════════════
+
+-- Un commerçant peut lire le profil de ses membres (pour la caisse)
+drop policy if exists "profiles_merchant_read_members" on public.profiles;
+create policy "profiles_merchant_read_members" on public.profiles
+  for select using (
+    exists (
+      select 1 from public.loyalty_balances lb
+      where lb.client_id = id
+        and lb.merchant_id = auth.uid()
+    )
+  );
+
+-- TRIGGER : créer le profil à l'inscription
+create or replace function public.handle_new_user()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare
+  v_role     text := coalesce(nullif(new.raw_user_meta_data->>'role', ''), 'client');
+  v_ref_code text := nullif(upper(trim(new.raw_user_meta_data->>'ref_code')), '');
+  v_referrer uuid;
+begin
+  insert into public.profiles (id, name, email, role, plan, referral_code)
+  values (
+    new.id,
+    coalesce(new.raw_user_meta_data->>'name', new.raw_user_meta_data->>'full_name', 'Utilisateur'),
+    new.email,
+    v_role,
+    coalesce(nullif(new.raw_user_meta_data->>'plan', ''), 'essential'),
+    case when v_role = 'commercant' then upper(substr(md5(new.id::text), 1, 8)) else null end
+  )
+  on conflict (id) do nothing;
+
+  -- Parrainage commerçant : si un code de parrain valide accompagne l'inscription,
+  -- on enregistre le lien (statut 'pending' — la récompense est versée au 1er paiement).
+  if v_role = 'commercant' and v_ref_code is not null then
+    select id into v_referrer from public.profiles
+      where referral_code = v_ref_code and role = 'commercant' and id <> new.id
+      limit 1;
+    if v_referrer is not null then
+      insert into public.merchant_referrals (referrer_id, referred_id, status)
+      values (v_referrer, new.id, 'pending')
+      on conflict (referred_id) do nothing;
+    end if;
+  end if;
+
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute function public.handle_new_user();
