@@ -616,7 +616,7 @@ async function processRegistrationEngine() {
             email: email,
             password: password,
             options: {
-                redirectTo: window.location.origin + '/validation',
+                emailRedirectTo: window.location.origin + '/validation',
                 // Le profil est créé côté serveur par le trigger handle_new_user
                 // à partir de ces métadonnées. Le plan n'est jamais décidé ici :
                 // l'essai et l'abonnement se gèrent après connexion (Stripe).

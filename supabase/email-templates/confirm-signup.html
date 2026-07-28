@@ -1,0 +1,46 @@
+<!-- Supabase → Authentication → Email Templates → "Confirm signup" -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f2f6f7;margin:0;padding:32px 12px;">
+  <tr>
+    <td align="center">
+      <table role="presentation" width="480" cellpadding="0" cellspacing="0" style="max-width:480px;width:100%;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px -14px rgba(14,42,46,.25);font-family:Arial,Helvetica,sans-serif;">
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#16B8C4,#0E7C8C);padding:26px 32px;">
+            <span style="font-size:24px;font-weight:800;letter-spacing:-.5px;color:#ffffff;">KEEPO</span>
+          </td>
+        </tr>
+        <!-- Body -->
+        <tr>
+          <td style="padding:34px 32px 30px;">
+            <h1 style="margin:0 0 12px;font-size:22px;line-height:1.25;color:#0E2A2E;">Confirmez votre e-mail</h1>
+            <p style="margin:0 0 24px;font-size:15px;line-height:1.6;color:#40595C;">
+              Bienvenue sur KEEPO&nbsp;! Il ne reste qu'une étape : cliquez sur le bouton ci-dessous pour activer votre compte et lancer votre programme de fidélité.
+            </p>
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 26px;">
+              <tr>
+                <td align="center" style="border-radius:12px;background:#16B8C4;">
+                  <a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:15px 38px;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:12px;">Confirmer mon e-mail</a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:0 0 4px;font-size:12.5px;line-height:1.5;color:#6E8285;">
+              Le bouton ne fonctionne pas&nbsp;? Copiez ce lien dans votre navigateur&nbsp;:
+            </p>
+            <p style="margin:0 0 22px;font-size:12px;line-height:1.5;word-break:break-all;">
+              <a href="{{ .ConfirmationURL }}" style="color:#0E7C8C;">{{ .ConfirmationURL }}</a>
+            </p>
+            <p style="margin:0;font-size:12.5px;line-height:1.5;color:#8A9A9C;">
+              Ce lien expire dans 24&nbsp;heures. Si vous n'êtes pas à l'origine de cette demande, ignorez simplement cet e-mail.
+            </p>
+          </td>
+        </tr>
+        <!-- Footer -->
+        <tr>
+          <td style="padding:18px 32px 26px;border-top:1px solid #e6eeef;">
+            <p style="margin:0;font-size:12px;color:#9DAFB1;">KEEPO — Fidélité digitale · <a href="https://keepo-dz.com" style="color:#0E7C8C;text-decoration:none;">keepo-dz.com</a></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
