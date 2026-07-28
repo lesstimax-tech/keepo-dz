@@ -266,7 +266,40 @@
     "Principal": "الرئيسية",
     "Fidélité": "الولاء",
     "Établissement": "المؤسّسة",
-    "Compte": "الحساب"
+    "Compte": "الحساب",
+    // ── Dashboard commerçant : titres & sous-titres ──
+    "Performances Générales": "الأداء العام",
+    "Vue d'ensemble de votre programme de fidélité": "نظرة عامة على برنامج ولائك",
+    "QR Code de Comptoir": "رمز QR للمنضدة",
+    "Scannez le QR Code du client pour créditer ses points": "امسح رمز QR للزبون لإضافة نقاطه",
+    "Imprimez et affichez ce QR Code pour que vos clients s'enregistrent": "اطبع واعرض رمز QR هذا ليسجّل زبائنك",
+    "Créer un Avantage Client": "إنشاء مكافأة للزبون",
+    "Configurez les récompenses que vos clients peuvent débloquer avec leurs points": "اضبط المكافآت التي يمكن لزبائنك فتحها بنقاطهم",
+    "Registre Comptable": "السجلّ المحاسبي",
+    "Journal de toutes les transactions de points": "سجلّ كل معاملات النقاط",
+    "Personnalisez l'apparence de la carte de fidélité affichée sur l'application client": "خصّص مظهر بطاقة الولاء المعروضة في تطبيق الزبون",
+    "Gérez vos points de vente. Chaque boutique partage le même programme de fidélité.": "أدر نقاط بيعك. كل محل يشارك نفس برنامج الولاء.",
+    "Gérez votre établissement et vos préférences": "أدر مؤسّستك وتفضيلاتك",
+    "Notre équipe est disponible 7j/7 pour vous accompagner": "فريقنا متاح 7/7 لمساعدتك",
+    // ── Indicateurs ──
+    "Membres Actifs": "الأعضاء النشطون",
+    "Total Points Émis": "إجمالي النقاط الممنوحة",
+    "Panier Moyen Fidélisé": "متوسط سلة الزبون الوفيّ",
+    "Récompenses Échangées": "المكافآت المستبدَلة",
+    // ── Boutons ──
+    "Analyser l'ID": "تحليل المعرّف",
+    "Régénérer": "إعادة التوليد",
+    "Imprimer en A5": "طباعة بحجم A5",
+    "Exporter en PDF": "تصدير إلى PDF",
+    "Ajouter au catalogue": "إضافة إلى الكتالوج",
+    "Exporter CSV": "تصدير CSV",
+    "Enregistrer le design": "حفظ التصميم",
+    "Générer": "توليد",
+    "Générer 5 idées": "توليد 5 أفكار",
+    "Générer le design": "توليد التصميم",
+    "Appliquer ces couleurs": "تطبيق هذه الألوان",
+    "Valider + Points": "تأكيد + نقاط",
+    "Contacter le Support Premium": "الاتصال بالدعم المميّز"
   };
   if (window.KEEPO_AR_EXTRA && typeof window.KEEPO_AR_EXTRA === "object") Object.assign(AR_MAP, window.KEEPO_AR_EXTRA);
   window.KEEPO_AR_MAP = AR_MAP;
