@@ -322,11 +322,11 @@ button:focus-visible,input:focus-visible{outline:2px solid rgba(22,184,196,.55);
     <div class="bp-logo"><a href="/"><img src="img/logo.png" alt="KEEPO"></a></div>
     <div class="bp-mid">
       <h1>La fidélité qui fait <span>revenir vos clients</span>.</h1>
-      <p>Points, cartes à tampons, récompenses et marketing automatisé — dans le téléphone de vos clients.</p>
+      <p>Points, cartes à tampons et récompenses — directement dans le téléphone de vos clients.</p>
       <div class="bp-checks">
         <span><i>✓</i>Prêt en 2 minutes, sans matériel</span>
-        <span><i>✓</i>14 jours d'essai — 0&nbsp;€ aujourd'hui</span>
-        <span><i>✓</i>Données hébergées en Europe · RGPD</span>
+        <span><i>✓</i>Offre unique 3 000 DZD/mois, tout inclus</span>
+        <span><i>✓</i>Sans engagement · vos données protégées</span>
       </div>
       <div class="bp-stat"><b>2 min</b> pour lancer votre programme, sans matériel</div>
     </div>
@@ -433,7 +433,7 @@ button:focus-visible,input:focus-visible{outline:2px solid rgba(22,184,196,.55);
         </div>
 
         <div id="merchant-trial-note">
-          🎁 <b>14 jours d'essai offerts</b> — toutes les fonctionnalités, 0&nbsp;€ aujourd'hui, annulable en 1 clic.
+          🎁 <b>Tout inclus dès le départ</b> — 3 000 DZD/mois, sans engagement, résiliable à tout moment.
         </div>
 
         <div class="form-group">
@@ -584,12 +584,8 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     if (password.length < 6) { showToast('Le mot de passe doit contenir au moins 6 caractères.'); return; }
     if (password !== confirmPassword) { showToast('Les mots de passe ne correspondent pas.'); return; }
 
-    const role = document.getElementById('register-role').value;
-    if (role === 'commercant') {
-        document.getElementById('paymentOverlay').style.display = 'flex';
-    } else {
-        processRegistrationEngine();
-    }
+    // Version DZ : pas d'essai gratuit ni de mur de paiement → inscription directe pour tous.
+    processRegistrationEngine();
 });
 
 function processMerchantRegistrationAfterPayment() {
