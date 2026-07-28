@@ -17,13 +17,13 @@
     "nav.reviews":   { fr: "Avis",            ar: "الآراء" },
     "nav.faq":       { fr: "FAQ",             ar: "الأسئلة الشائعة" },
     "nav.login":     { fr: "Se connecter",    ar: "تسجيل الدخول" },
-    "nav.trial":     { fr: "Essai gratuit",   ar: "تجربة مجانية" },
+    "nav.trial":     { fr: "Créer un compte", ar: "إنشاء حساب" },
     "account.create":{ fr: "Créer un compte", ar: "إنشاء حساب" },
     "tag.pro":       { fr: "PRO",             ar: "PRO" },
     "tag.soon":      { fr: "BIENTÔT",         ar: "قريباً" },
 
     /* ─── Hero ─── */
-    "hero.badge": { fr: "Nouveau — Marketing automatisé inclus dans Pro", ar: "جديد — تسويق آلي مضمَّن في Pro" },
+    "hero.badge": { fr: "Nouveau — Vos cartes de fidélité prêtes en 2 minutes", ar: "جديد — بطاقات ولائك جاهزة في دقيقتين" },
     "hero.title": {
       fr: 'Offrez à votre commerce un vrai <span class="grad-text">programme de fidélité</span>.',
       ar: 'امنح متجرك <span class="grad-text">برنامج ولاء</span> حقيقياً.'
@@ -32,14 +32,14 @@
       fr: 'Bouchers, coiffeurs, restaurateurs, boulangers… Donnez à vos clients les avantages des grandes enseignes — points, cartes à tampons, récompenses — directement dans leur téléphone. Et <strong>récupérez leur nom et leur e-mail dès la première visite</strong>.',
       ar: 'الجزّارون، الحلّاقون، أصحاب المطاعم، الخبّازون… امنح زبائنك مزايا العلامات الكبرى — نقاط، وبطاقات أختام، ومكافآت — مباشرةً في هواتفهم. و<strong>احصل على اسمهم وبريدهم الإلكتروني منذ أوّل زيارة</strong>.'
     },
-    "hero.cta_start": { fr: "Démarrer l'essai gratuit", ar: "ابدأ التجربة المجانية" },
+    "hero.cta_start": { fr: "Créer mon compte", ar: "إنشاء حسابي" },
     "hero.cta_demo":  { fr: "Essayer la démo",          ar: "جرّب العرض التوضيحي" },
     "hero.proof_2min":{ fr: "Prêt en 2 minutes",        ar: "جاهز في دقيقتين" },
     "hero.proof_nomat":{ fr: "Sans matériel",           ar: "بدون أي معدات" },
-    "hero.proof_trial":{ fr: "14 jours d'essai — 0 DZD aujourd'hui", ar: "14 يوماً تجربة — بدون دفع اليوم" },
-    "hero.stat1_l": { fr: "pour tout configurer",           ar: "لإعداد كل شيء" },
-    "hero.stat2_l": { fr: "de matériel à acheter",          ar: "معدات للشراء" },
-    "hero.stat3_l": { fr: "d'essai offert, 0 DZD aujourd'hui", ar: "تجربة مجانية، بدون دفع اليوم" },
+    "hero.proof_trial":{ fr: "Sans engagement", ar: "بدون التزام" },
+    "hero.stat1_l": { fr: "pour tout configurer",  ar: "لإعداد كل شيء" },
+    "hero.stat2_l": { fr: "de matériel à acheter", ar: "معدات للشراء" },
+    "hero.stat3_l": { fr: "par mois, tout inclus",  ar: "شهرياً، كل شيء مضمّن" },
 
     /* ─── Téléphone (visuel) ─── */
     "ph.chip":  { fr: "Carte Privilège",   ar: "بطاقة امتياز" },
@@ -106,7 +106,7 @@
     "how.s2t": { fr: "Vos clients scannent le QR du comptoir", ar: "يمسح زبائنك رمز QR من المنضدة" },
     "how.s2p": { fr: "Leur carte apparaît dans leur téléphone — et vous, vous récupérez leur nom et leur e-mail dès la première visite.", ar: "تظهر بطاقتهم في هواتفهم — وأنت تحصل على اسمهم وبريدهم منذ أول زيارة." },
     "how.s3t": { fr: "Scannez, récompensez, fidélisez", ar: "امسح، كافئ، اكسب الولاء" },
-    "how.s3p": { fr: "Chaque passage crédite des points en un scan. Et le marketing Pro fait revenir vos clients, automatiquement.", ar: "كل زيارة تُضيف نقاطاً بمسح واحد. وتسويق Pro يُعيد زبائنك تلقائياً." },
+    "how.s3p": { fr: "Chaque passage crédite des points en un scan — et vos clients reviennent pour débloquer leurs récompenses.", ar: "كل زيارة تُضيف نقاطاً بمسح واحد — ويعود زبائنك لفتح مكافآتهم." },
 
     /* ─── Résultats ─── */
     "res.eyebrow": { fr: "Le calcul", ar: "الحساب" },
@@ -132,7 +132,7 @@
     /* ─── Tarifs ─── */
     "pricing.eyebrow": { fr: "Tarifs", ar: "الأسعار" },
     "pricing.title": { fr: "Un tarif simple, sans engagement", ar: "سعر بسيط، بدون التزام" },
-    "pricing.sub": { fr: "14 jours d'essai complet · 0 DZD aujourd'hui · sans engagement, résiliable en 1 clic.", ar: "14 يوماً تجربة كاملة · بدون دفع اليوم · بدون التزام، يمكن الإلغاء بنقرة." },
+    "pricing.sub": { fr: "Un seul prix, tout inclus · sans engagement, résiliable à tout moment.", ar: "سعر واحد، كل شيء مضمّن · بدون التزام، يمكن الإلغاء في أي وقت." },
     "pricing.for": { fr: "Tout débloqué pour faire revenir vos clients", ar: "كل شيء مفتوح لإعادة زبائنك" },
     "pricing.pop": { fr: "Recommandé par les commerçants", ar: "موصى به من التجّار" },
     "pricing.d1": { fr: "1 mois", ar: "شهر" },
@@ -140,7 +140,7 @@
     "pricing.d6": { fr: "6 mois · −10%", ar: "6 أشهر · −10%" },
     "pricing.d12": { fr: "12 mois · −15%", ar: "12 شهراً · −15%" },
     "pricing.inc1": { fr: "Membres fidèles illimités", ar: "أعضاء أوفياء بلا حدود" },
-    "pricing.inc2": { fr: "Programme marketing complet (relances, roue, VIP…)", ar: "برنامج تسويق كامل (تذكيرات، عجلة، VIP…)" },
+    "pricing.inc2": { fr: "Points &amp; cartes à tampons", ar: "نقاط وبطاقات أختام" },
     "pricing.inc3": { fr: "Toutes les fonctions IA", ar: "جميع ميزات الذكاء الاصطناعي" },
     "pricing.inc4": { fr: "Analytics premium temps réel", ar: "إحصائيات متقدّمة فورية" },
     "pricing.inc5": { fr: "Mode caisse + multi-caissiers", ar: "وضع الصندوق + صرّافون متعددون" },
@@ -171,9 +171,9 @@
     /* ─── CTA final ─── */
     "final.title": { fr: "La fidélité n'est plus réservée aux grandes enseignes.", ar: "الوفاء لم يعُد حكراً على العلامات الكبرى." },
     "final.sub": { fr: "Lancez votre programme de fidélité aujourd'hui et donnez à vos clients une vraie raison de revenir.", ar: "أطلق برنامج ولائك اليوم وامنح زبائنك سبباً حقيقياً للعودة." },
-    "final.cta_start": { fr: "Démarrer mon essai gratuit", ar: "ابدأ تجربتي المجانية" },
+    "final.cta_start": { fr: "Créer mon compte", ar: "إنشاء حسابي" },
     "final.cta_demo": { fr: "Tester la démo d'abord", ar: "جرّب العرض أولاً" },
-    "final.note": { fr: "Essai 14 jours · 0 DZD aujourd'hui · Résiliation en 1 clic · Vos données protégées", ar: "14 يوماً تجربة · بدون دفع اليوم · إلغاء بنقرة · بياناتك محمية" },
+    "final.note": { fr: "Sans engagement · Résiliation à tout moment · Vos données protégées", ar: "بدون التزام · إلغاء في أي وقت · بياناتك محمية" },
 
     /* ─── Footer ─── */
     "foot.brand": { fr: "Le programme de fidélité des commerces indépendants. Simple, beau, automatique.", ar: "برنامج الولاء للتجّار المستقلّين. بسيط، أنيق، تلقائي." },
