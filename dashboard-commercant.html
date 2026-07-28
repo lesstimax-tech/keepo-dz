@@ -3236,17 +3236,12 @@
                 .eq('id', currentMerchantId).maybeSingle();
             if (profile && profile.role === 'client') { window.location.href = '/dashboard-client'; return; }
 
-            if (profile && profile.plan) activeMerchantPlan = profile.plan.toLowerCase();
-            // ── Essai Pro 14 jours : un essai expiré bascule l'UI en Essential
-            // immédiatement (le cron serveur régularise la base de son côté).
-            // Les abonnés payants ont un stripe_subscription_id → jamais concernés.
-            merchantTrialEndsAt  = profile?.trial_ends_at || null;
-            merchantHasStripeSub = !!profile?.stripe_subscription_id;
-            if ((activeMerchantPlan === 'pro' || activeMerchantPlan === 'pro scale')
-                && !merchantHasStripeSub && merchantTrialEndsAt
-                && new Date(merchantTrialEndsAt) <= new Date()) {
-                activeMerchantPlan = 'essential';
-            }
+            // ── Version DZ : offre unique. Tout commerçant a accès à TOUT.
+            // Aucune distinction Essential/Pro, aucun essai qui rétrograde l'UI,
+            // aucun verrou. Un compte KEEPO connecté à la version DZ = accès complet.
+            activeMerchantPlan = 'pro';
+            merchantTrialEndsAt  = null;
+            merchantHasStripeSub = true;
 
             // ── Mur d'abonnement : tout compte commerçant créé après le
             // lancement de la facturation doit avoir un abonnement Stripe
@@ -4247,17 +4242,7 @@
     function applySaaSPlanRestrictions() {
         const badge = document.getElementById('merchant-plan-badge');
         if (activeMerchantPlan === 'pro' || activeMerchantPlan === 'pro scale') {
-            const trialing = merchantTrialEndsAt && new Date(merchantTrialEndsAt) > new Date();
-            if (trialing) {
-                const daysLeft = Math.max(1, Math.ceil((new Date(merchantTrialEndsAt) - Date.now()) / 86400000));
-                badge.innerHTML = '<i class="fa-solid fa-crown"></i> Essai Pro · ' + daysLeft + ' j restant' + (daysLeft > 1 ? 's' : '');
-                badge.className = "plan-badge plan-pro";
-                badge.style.cursor = 'pointer';
-                badge.title = 'Essai Pro gratuit — cliquez pour choisir votre formule';
-                badge.onclick = () => { window.location.href = '/upgrade'; };
-            } else {
-                badge.innerHTML = '<i class="fa-solid fa-crown"></i> Pro Scale'; badge.className = "plan-badge plan-pro";
-            }
+            if (badge) badge.style.display = 'none';  // Version DZ : offre unique → aucun badge de plan
             document.getElementById('lock-panier').outerHTML = "";
             document.getElementById('lock-predictive').outerHTML = "";
             document.getElementById('lock-export-csv').outerHTML = "";
