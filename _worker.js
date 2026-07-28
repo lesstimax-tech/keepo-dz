@@ -107,7 +107,7 @@ async function getAuthUser(request, env) {
   const token  = header.startsWith('Bearer ') ? header.slice(7).trim() : '';
   if (!token || token.length < 20) return null;
 
-  const SUPA_URL  = env.SUPABASE_URL      || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL  = env.SUPABASE_URL      || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_ANON = env.SUPABASE_ANON_KEY || 'sb_publishable_XJoCbPawUCipKr2lunV8HA_r8XQ0rJ1';
   try {
     const res = await fetch(`${SUPA_URL}/auth/v1/user`, {
@@ -456,7 +456,7 @@ async function handleStripeCheckout(request, env) {
   // se lit côté serveur (stripe_customer_id absent = jamais souscrit). Un client
   // résilié qui re-souscrit n'a pas droit à un second essai.
   let trialDays = 0;
-  const SUPA_URL = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_KEY = env.SUPABASE_SERVICE_ROLE;
   if (SUPA_KEY) {
     try {
@@ -571,7 +571,7 @@ async function handleStripeWebhook(request, env) {
     const subId      = session?.subscription;
 
     if (merchantId && isUuid(merchantId)) {
-      const SUPA_URL  = env.SUPABASE_URL  || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+      const SUPA_URL  = env.SUPABASE_URL  || 'https://phkrdlcplzjenbulsqls.supabase.co';
       const SUPA_KEY  = env.SUPABASE_SERVICE_ROLE;
       if (!SUPA_KEY) {
         console.error('SUPABASE_SERVICE_ROLE manquant pour webhook');
@@ -618,7 +618,7 @@ async function handleStripeWebhook(request, env) {
     const sub        = event.data?.object;
     const merchantId = sub?.metadata?.merchant_id;
     const subId      = sub?.id;
-    const SUPA_URL   = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+    const SUPA_URL   = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
     const SUPA_KEY   = env.SUPABASE_SERVICE_ROLE;
 
     if (SUPA_KEY && ((merchantId && isUuid(merchantId)) || subId)) {
@@ -646,7 +646,7 @@ async function handleStripeWebhook(request, env) {
     const invoice  = event.data?.object;
     const subId    = invoice?.subscription;
     const amount   = invoice?.amount_paid || 0;
-    const SUPA_URL = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+    const SUPA_URL = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
     const SUPA_KEY = env.SUPABASE_SERVICE_ROLE;
 
     if (SUPA_KEY && subId && amount > 0) {
@@ -793,7 +793,7 @@ async function handleSendCampaign(request, env) {
   const RESEND_KEY = env.RESEND_API_KEY;
   if (!RESEND_KEY) return json({ error: 'RESEND_API_KEY non configuré dans wrangler' }, 500);
 
-  const SUPA_URL = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_KEY = env.SUPABASE_SERVICE_ROLE;
   if (!SUPA_KEY) return json({ error: 'SUPABASE_SERVICE_ROLE manquant' }, 500);
 
@@ -906,7 +906,7 @@ async function handleMerchantLogo(request, env, url) {
   const fallback = () => Response.redirect(new URL('/img/icon-192.png', url.origin).toString(), 302);
   if (!isUuid(merchantId)) return fallback();
 
-  const SUPA_URL = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_KEY = env.SUPABASE_SERVICE_ROLE;
   if (!SUPA_KEY) return fallback();
 
@@ -972,7 +972,7 @@ async function handleDeleteAccount(request, env) {
   if (!user) return json({ error: 'Authentification requise' }, 401);
   const userId = user.id;
 
-  const SUPA_URL = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_KEY = env.SUPABASE_SERVICE_ROLE;
   if (!SUPA_KEY) return json({ error: 'Service indisponible' }, 500);
 
@@ -1013,7 +1013,7 @@ async function handleCampaignCount(request, env) {
   const auth = await requireMerchant(request, env, merchantId);
   if (auth.error) return auth.error;
 
-  const SUPA_URL = env.SUPABASE_URL || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL = env.SUPABASE_URL || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_KEY = env.SUPABASE_SERVICE_ROLE;
   if (!SUPA_KEY) return json({ count: 0 });
 
@@ -1249,7 +1249,7 @@ async function handleMerchantPage(request, env, url) {
     return new Response(notFoundPage(), { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
   }
 
-  const SUPA_URL  = env.SUPABASE_URL  || 'https://kvtsjylnwgexfywvxnwz.supabase.co';
+  const SUPA_URL  = env.SUPABASE_URL  || 'https://phkrdlcplzjenbulsqls.supabase.co';
   const SUPA_ANON = env.SUPABASE_ANON_KEY || 'sb_publishable_XJoCbPawUCipKr2lunV8HA_r8XQ0rJ1';
   const headers   = { 'apikey': SUPA_ANON, 'Authorization': `Bearer ${SUPA_ANON}` };
 
