@@ -1556,7 +1556,7 @@
                     <div id="lock-panier"></div>
                     <div class="stat-card-icon" style="color:var(--pro-color)"><i class="fa-solid fa-basket-shopping"></i></div>
                     <div class="stat-label">Panier Moyen Fidélisé</div>
-                    <div class="stat-val" id="stat-avg-basket">— €</div>
+                    <div class="stat-val" id="stat-avg-basket">— DZD</div>
                     <div class="stat-delta" style="color:var(--success)" id="stat-avg-basket-delta"><i class="fa-solid fa-arrow-trend-up"></i> Calcul en cours…</div>
                 </div>
 
@@ -2482,7 +2482,7 @@
                             <button type="button" id="mode-points-btn" class="loyalty-mode-btn active" onclick="setLoyaltyMode('points')">
                                 <i class="fa-solid fa-coins"></i>
                                 <strong>Points</strong>
-                                <span>X points par € dépensé</span>
+                                <span>X points par DZD dépensé</span>
                             </button>
                             <button type="button" id="mode-stamps-btn" class="loyalty-mode-btn" onclick="setLoyaltyMode('stamps')">
                                 <i class="fa-solid fa-stamp"></i>
@@ -2497,12 +2497,12 @@
                             <!-- Inputs libres -->
                             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
                                 <span style="font-size:13px;color:var(--text-sub);">Pour</span>
-                                <input type="number" id="rate-euros" min="0.01" step="0.01" value="10"
+                                <input type="number" id="rate-euros" min="1" step="1" value="100"
                                     oninput="updateRatePreview()"
                                     style="width:72px;padding:8px 10px;text-align:center;font-size:15px;font-weight:700;
                                            background:#000;border:1px solid rgba(14,124,140,0.3);color:var(--secondary-accent);
                                            border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;">
-                                <span style="font-size:13px;color:var(--text-sub);">€ dépensés →</span>
+                                <span style="font-size:13px;color:var(--text-sub);">DZD dépensés →</span>
                                 <input type="number" id="rate-points" min="1" step="1" value="1"
                                     oninput="updateRatePreview()"
                                     style="width:64px;padding:8px 10px;text-align:center;font-size:15px;font-weight:700;
@@ -2516,12 +2516,11 @@
                             <!-- Presets rapides -->
                             <div style="font-size:10px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;">Presets rapides</div>
                             <div style="display:flex;gap:6px;flex-wrap:wrap;">
-                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(1,10)">1€ = 10 pts</button>
-                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(1,5)">1€ = 5 pts</button>
-                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(1,1)">1€ = 1 pt</button>
-                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(10,1)">10€ = 1 pt</button>
-                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(100,1)">100€ = 1 pt</button>
-                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(1000,1)">1000€ = 1 pt</button>
+                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(50,1)">50 DZD = 1 pt</button>
+                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(100,1)">100 DZD = 1 pt</button>
+                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(200,1)">200 DZD = 1 pt</button>
+                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(500,1)">500 DZD = 1 pt</button>
+                                <button type="button" class="rate-preset-btn" onclick="setRatePreset(1000,1)">1000 DZD = 1 pt</button>
                             </div>
                         </div>
                     </div>
@@ -3164,7 +3163,7 @@
 
         <div id="scan-amount-section">
             <div class="form-group" style="text-align:left;margin-bottom:6px;">
-                <label>Montant de la vente (€)</label>
+                <label>Montant de la vente (DZD)</label>
                 <input type="number" id="modal-sale-amount" placeholder="0.00" style="font-size:20px;text-align:center;">
             </div>
             <div style="font-size:11px;color:var(--text-muted);margin-bottom:18px;">Le montant détermine les points accordés</div>
@@ -3426,7 +3425,7 @@
         // Mettre en évidence le preset actif
         document.querySelectorAll('.rate-preset-btn').forEach(btn => {
             btn.classList.toggle('active',
-                btn.textContent.trim() === (euros === 1 ? `1€ = ${points} pt${points>1?'s':''}` : `${euros}€ = ${points} pt${points>1?'s':''}`)
+                btn.textContent.trim() === `${euros} DZD = ${points} pt${points>1?'s':''}`
             );
         });
         updateRatePreview();
@@ -3467,23 +3466,18 @@
     }
 
     function updateRatePreview() {
-        const euros  = parseFloat(document.getElementById('rate-euros')?.value)  || 10;
+        const euros  = parseFloat(document.getElementById('rate-euros')?.value)  || 100;
         const points = parseFloat(document.getElementById('rate-points')?.value) || 1;
         const ppe    = points / euros;
         const preview = document.getElementById('rate-preview-text');
         if (!preview) return;
 
-        let exampleStr;
-        if (euros === 1) {
-            exampleStr = `1 € → <strong style="color:var(--secondary-accent)">${points} point${points > 1 ? 's' : ''}</strong>`;
-        } else {
-            exampleStr = `${euros} € → <strong style="color:var(--secondary-accent)">${points} point${points > 1 ? 's' : ''}</strong>`;
-        }
+        const exampleStr = `${euros} DZD → <strong style="color:var(--secondary-accent)">${points} point${points > 1 ? 's' : ''}</strong>`;
 
         // Exemple concret
-        const examplePurchase = 50;
+        const examplePurchase = 500;
         const examplePts = Math.max(1, Math.floor(examplePurchase * ppe));
-        preview.innerHTML = `→ ${exampleStr} &nbsp;·&nbsp; <span style="color:var(--text-muted);font-size:11px;">Ex : achat de ${examplePurchase}€ = ${examplePts} pt${examplePts > 1 ? 's' : ''}</span>`;
+        preview.innerHTML = `→ ${exampleStr} &nbsp;·&nbsp; <span style="color:var(--text-muted);font-size:11px;">Ex : achat de ${examplePurchase} DZD = ${examplePts} pt${examplePts > 1 ? 's' : ''}</span>`;
     }
 
     // ─── PERSISTANCE : SETTINGS ───
@@ -3643,7 +3637,7 @@
         const mobName = document.getElementById('mob-merchant-name');
         if (mobName) mobName.innerText = name;
 
-        const euroLabel = euros === 1 ? '1€' : `${euros}€`;
+        const euroLabel = `${euros} DZD`;
         const ptLabel   = points === 1 ? '1 pt' : `${points} pts`;
         showToast('success', '✓ Paramètres enregistrés', `Taux : ${euroLabel} = ${ptLabel}`);
         updatePublicUrlPreview();
@@ -3740,7 +3734,7 @@
                     </div>
                     <div>
                         <div style="font-size:13px;font-weight:600;color:var(--text-main);">${isCredit?'Points crédités':'Récompense échangée'}</div>
-                        <div style="font-size:11px;color:var(--text-muted);">${date} · ${cname}${tx.amount>0?' · '+tx.amount+'€':''}</div>
+                        <div style="font-size:11px;color:var(--text-muted);">${date} · ${cname}${tx.amount>0?' · '+tx.amount+' DZD':''}</div>
                     </div>
                 </div>
                 <span style="font-weight:800;font-size:14px;color:${isCredit?'var(--secondary-accent)':'var(--primary-accent)'};">${pts}</span>
@@ -4548,7 +4542,7 @@
                 `${currentActiveClientSession.name} : ${final}/${req} tampons${final >= req ? ' 🎉 Carte pleine !' : ''}`);
         } else {
             showToast('success', `+${points} point${points > 1 ? 's' : ''} crédités !`,
-                `${amount}€ · Nouveau solde de ${currentActiveClientSession.name} : ${final} Pts`);
+                `${amount} DZD · Nouveau solde de ${currentActiveClientSession.name} : ${final} Pts`);
         }
         refreshDashboardCloudCounters();
     }
@@ -5597,7 +5591,7 @@
             const s = String(v ?? '');
             return /[";\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
         };
-        const header = ['Date', 'Heure', 'Type', 'Points', 'Montant (EUR)', 'Client'];
+        const header = ['Date', 'Heure', 'Type', 'Points', 'Montant (DZD)', 'Client'];
         const lines = data.map(tx => {
             const d = new Date(tx.created_at);
             return [
@@ -5684,11 +5678,11 @@
             const deltaEl = document.getElementById('stat-avg-basket-delta');
             if (avgEl) {
                 if (paying.length === 0) {
-                    avgEl.innerText = '— €';
+                    avgEl.innerText = '— DZD';
                     if (deltaEl) deltaEl.innerHTML = '<i class="fa-solid fa-info-circle"></i> Aucune transaction encore';
                 } else {
                     const avg = paying.reduce((a, t) => a + (t.amount || 0), 0) / paying.length;
-                    avgEl.innerText = avg.toFixed(2) + ' €';
+                    avgEl.innerText = avg.toFixed(0) + ' DZD';
                     if (deltaEl) deltaEl.innerHTML = `<i class="fa-solid fa-arrow-trend-up"></i> sur ${paying.length} achat${paying.length > 1 ? 's' : ''}`;
                 }
             }
@@ -5995,8 +5989,8 @@
             </div>
             <div class="period-stat">
                 <div class="period-stat-label">Chiffre fidélisé</div>
-                <div class="period-stat-val">${thisRev.toFixed(0)} €</div>
-                <div class="period-stat-prev">vs ${prevRev.toFixed(0)} €</div>
+                <div class="period-stat-val">${thisRev.toFixed(0)} DZD</div>
+                <div class="period-stat-prev">vs ${prevRev.toFixed(0)} DZD</div>
                 ${deltaBlock(thisRev, prevRev)}
             </div>
             <div class="period-stat">
@@ -6121,7 +6115,7 @@
             const icon = isCredit ? 'coins' : 'gift';
             const title = isCredit ? 'Points crédités' : (tx.validated_at ? 'Récompense validée' : 'Récompense réclamée');
             const sub = isCredit
-                ? `${name}${tx.amount > 0 ? ' · ' + tx.amount + '€' : ''} · +${tx.points_changed} pts`
+                ? `${name}${tx.amount > 0 ? ' · ' + tx.amount + ' DZD' : ''} · +${tx.points_changed} pts`
                 : `${name} · ${Math.abs(tx.points_changed)} pts`;
             return `<div class="activity-item">
                 <div class="activity-dot ${dotClass}"><i class="fa-solid fa-${icon}"></i></div>
