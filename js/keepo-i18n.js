@@ -195,6 +195,162 @@
   }
   window.KEEPO_DICT = DICT;
 
+  /* ══════════════════════════════════════════════════════════
+     AUTO-TRADUCTION FR → AR (sans balisage data-i18n)
+     Parcourt le DOM + attributs (placeholder/title/aria-label),
+     remplace le texte français présent dans AR_MAP, et attrape le
+     contenu généré par JS (toasts, dashboards…) via MutationObserver.
+     Pour étendre la couverture : ajouter des paires "français exact":"arabe".
+     ══════════════════════════════════════════════════════════ */
+  const AR_MAP = {
+    // ── Commun (boutons, actions, champs) ──
+    "Se connecter": "تسجيل الدخول",
+    "Créer un compte": "إنشاء حساب",
+    "Créer mon compte": "إنشاء حسابي",
+    "Déconnexion": "تسجيل الخروج",
+    "Enregistrer": "حفظ",
+    "Annuler": "إلغاء",
+    "Confirmer": "تأكيد",
+    "Fermer": "إغلاق",
+    "Retour": "رجوع",
+    "Suivant": "التالي",
+    "Précédent": "السابق",
+    "Modifier": "تعديل",
+    "Supprimer": "حذف",
+    "Ajouter": "إضافة",
+    "Rechercher": "بحث",
+    "Chargement...": "جارٍ التحميل...",
+    "Oui": "نعم",
+    "Non": "لا",
+    "Adresse e-mail": "البريد الإلكتروني",
+    "Mot de passe": "كلمة المرور",
+    "Confirmer le mot de passe": "تأكيد كلمة المرور",
+    "Votre nom": "اسمك",
+    "Nom": "الاسم",
+    "Téléphone": "الهاتف",
+    // ── connexion.html ──
+    "← Retour au site": "← العودة إلى الموقع",
+    "Confirmez votre e-mail": "أكّد بريدك الإلكتروني",
+    "Cliquez sur ce lien pour activer votre compte. Pensez à vérifier vos spams.": "انقر على هذا الرابط لتفعيل حسابك. تحقّق أيضاً من مجلّد الرسائل غير المرغوبة.",
+    "Bienvenue": "مرحباً",
+    "Connectez-vous à votre espace KEEPO": "سجّل الدخول إلى مساحتك في KEEPO",
+    "Mot de passe oublié ?": "نسيت كلمة المرور؟",
+    "Connexion protégée par vérification en 2 étapes": "دخول محمي بالتحقّق بخطوتين",
+    "Code reçu par e-mail": "الرمز المُستلَم عبر البريد",
+    "Un code de connexion à usage unique va être envoyé à votre adresse e-mail.": "سيُرسَل رمز دخول لمرة واحدة إلى بريدك الإلكتروني.",
+    "Recevoir mon code": "استلام الرمز",
+    "Renvoyer le code": "إعادة إرسال الرمز",
+    "← Connexion par mot de passe": "← الدخول بكلمة المرور",
+    "Pas encore de compte ?": "ليس لديك حساب بعد؟",
+    "Je suis…": "أنا…",
+    "Client": "زبون",
+    "J'utilise mes cartes de fidélité": "أستعمل بطاقات ولائي",
+    "Commerçant": "تاجر",
+    "Je fidélise mes clients": "أكسب ولاء زبائني",
+    "En créant un compte, vous acceptez nos conditions d'utilisation.": "بإنشاء حساب، أنت توافق على شروط الاستخدام.",
+    "Vous êtes déjà connecté": "أنت مسجّل الدخول بالفعل",
+    "Votre session est active et sécurisée.": "جلستك نشطة ومؤمّنة.",
+    "La fidélité qui fait": "الولاء الذي يُعيد",
+    "revenir vos clients": "زبائنك",
+    // ── Navigation dashboard commerçant ──
+    "Dashboard": "لوحة التحكّم",
+    "Terminal de Scan": "محطة المسح",
+    "Code QR": "رمز QR",
+    "Récompenses": "المكافآت",
+    "Historique": "السجلّ",
+    "Studio Design Card": "استوديو تصميم البطاقة",
+    "Mes Boutiques": "محلاتي",
+    "Mode Caisse": "وضع الصندوق",
+    "Paramètres": "الإعدادات",
+    "Aide & Support": "المساعدة والدعم",
+    "Principal": "الرئيسية",
+    "Fidélité": "الولاء",
+    "Établissement": "المؤسّسة",
+    "Compte": "الحساب"
+  };
+  if (window.KEEPO_AR_EXTRA && typeof window.KEEPO_AR_EXTRA === "object") Object.assign(AR_MAP, window.KEEPO_AR_EXTRA);
+  window.KEEPO_AR_MAP = AR_MAP;
+
+  const _orig = new WeakMap();  // textNode → valeur FR d'origine (pour restaurer)
+  const _ATTRS = ["placeholder", "title", "aria-label"];
+  let _observer = null;
+
+  function _skipText(node) {
+    const p = node.parentElement;
+    if (!p) return true;
+    const tag = p.tagName;
+    if (tag === "SCRIPT" || tag === "STYLE" || tag === "NOSCRIPT") return true;
+    if (p.closest("#keepo-lang-toggle,[data-i18n],[data-i18n-html]")) return true;
+    return false;
+  }
+
+  function _applyText(node, toAr) {
+    const raw = node.nodeValue;
+    if (toAr) {
+      const key = raw.trim();
+      if (!key) return;
+      const ar = AR_MAP[key];
+      if (ar) {
+        if (!_orig.has(node)) _orig.set(node, raw);
+        node.nodeValue = raw.replace(key, ar);
+      }
+    } else if (_orig.has(node)) {
+      node.nodeValue = _orig.get(node);
+    }
+  }
+
+  function _applyAttrs(el, toAr) {
+    _ATTRS.forEach(a => {
+      if (!el.hasAttribute || !el.hasAttribute(a)) return;
+      const key = "fr_" + a.replace(/-/g, "_");
+      if (toAr) {
+        const ar = AR_MAP[(el.getAttribute(a) || "").trim()];
+        if (ar) {
+          if (!el.dataset[key]) el.dataset[key] = el.getAttribute(a);
+          el.setAttribute(a, ar);
+        }
+      } else if (el.dataset[key]) {
+        el.setAttribute(a, el.dataset[key]);
+      }
+    });
+  }
+
+  function autoTranslate(root, toAr) {
+    if (!root) return;
+    if (root.nodeType === 3) { if (!_skipText(root)) _applyText(root, toAr); return; }
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (_skipText(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT)
+    });
+    const nodes = []; let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(t => _applyText(t, toAr));
+    if (root.querySelectorAll) {
+      root.querySelectorAll("[placeholder],[title],[aria-label]").forEach(el => {
+        if (!el.closest("#keepo-lang-toggle")) _applyAttrs(el, toAr);
+      });
+    }
+    if (root.nodeType === 1) _applyAttrs(root, toAr);
+  }
+
+  function startObserver() {
+    if (_observer) return;
+    let queued = [], scheduled = false;
+    const flush = () => {
+      scheduled = false;
+      const batch = queued; queued = [];
+      batch.forEach(node => autoTranslate(node, true));
+    };
+    _observer = new MutationObserver(muts => {
+      for (const m of muts) {
+        if (m.type === "childList") m.addedNodes.forEach(nd => queued.push(nd));
+        else if (m.type === "characterData") queued.push(m.target);
+      }
+      if (queued.length && !scheduled) { scheduled = true; setTimeout(flush, 0); }
+    });
+    _observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  }
+  function stopObserver() { if (_observer) { _observer.disconnect(); _observer = null; } }
+
   const STORAGE_KEY = "keepo_lang";
   function currentLang() {
     return localStorage.getItem(STORAGE_KEY) === "ar" ? "ar" : "fr";
@@ -220,6 +376,10 @@
         if (attr && t) el.setAttribute(attr, t[lang] || t.fr);
       });
     });
+
+    // Auto-traduction du reste de la page (texte + attributs + contenu dynamique)
+    if (lang === "ar") { autoTranslate(document.body, true); startObserver(); }
+    else { stopObserver(); autoTranslate(document.body, false); }
 
     localStorage.setItem(STORAGE_KEY, lang);
     updateToggle(lang);
