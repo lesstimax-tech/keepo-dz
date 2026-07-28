@@ -1,6 +1,6 @@
 ﻿{
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "keepo-dz",
+  "name": "keepo-dz1",
   "main": "_worker.js",
   "compatibility_date": "2026-05-26",
   "compatibility_flags": ["nodejs_compat"],
