@@ -315,7 +315,34 @@
     "points": "نقاط",
     "Voir": "عرض",
     "Enregistré": "تم الحفظ",
-    "Copié !": "تم النسخ!"
+    "Copié !": "تم النسخ!",
+    // ── Formulaires dashboard commerçant ──
+    "Nom du Produit / Offre": "اسم المنتج / العرض",
+    "Points Requis": "النقاط المطلوبة",
+    "Valeur Estimée (DZD)": "القيمة التقديرية (دج)",
+    "Description courte (optionnel)": "وصف قصير (اختياري)",
+    "Image de fond": "صورة الخلفية",
+    "Enseigne / Titre de carte": "اسم المتجر / عنوان البطاقة",
+    "Couleur du texte": "لون النص",
+    "Couleur d'accent": "لون التمييز",
+    "Image d'arrière-plan": "صورة الخلفية",
+    "Opacité de l'overlay sombre": "شفافية الطبقة الداكنة",
+    "Nom de la boutique *": "اسم المحل *",
+    "Adresse": "العنوان",
+    "Nom de l'entreprise / Enseigne": "اسم الشركة / المتجر",
+    "Nom du Gérant": "اسم المسيّر",
+    "Téléphone professionnel": "الهاتف المهني",
+    "Secteur d'activité": "قطاع النشاط",
+    "☕ Café / Boulangerie": "☕ مقهى / مخبزة",
+    "🛒 Commerce alimentaire": "🛒 تجارة غذائية",
+    "💄 Beauté / Cosmétique": "💄 تجميل / مستحضرات",
+    "👗 Mode / Textile": "👗 أزياء / نسيج",
+    // Placeholders (exemples adaptés)
+    "Coller l'UUID d'un client...": "الصق مُعرّف زبون...",
+    "Ex: Café Expresso Offert": "مثال: قهوة إسبريسو مجانية",
+    "Ex : Cité 200 logements, Alger": "مثال: حي 200 مسكن، الجزائر",
+    "Ex: Café El Djazaïr": "مثال: مقهى الجزائر",
+    "Ex: Karim Benali": "مثال: كريم بن علي"
   };
   if (window.KEEPO_AR_EXTRA && typeof window.KEEPO_AR_EXTRA === "object") Object.assign(AR_MAP, window.KEEPO_AR_EXTRA);
   window.KEEPO_AR_MAP = AR_MAP;
