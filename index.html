@@ -980,6 +980,7 @@ footer{background:#fff;border-top:1px solid var(--line);padding:64px 0 0}
     if (cta) cta.href = "connexion.html?plan=pro&months=" + selM;
     if (ctaLabel) ctaLabel.textContent = (ar ? "إنشاء حساب — " : "Créer mon compte — ") + fmtDZD(p.total) + (ar ? " دج" : " DZD");
   }
+  window.setPlan = setPlan;   // exposé pour les onclick inline des boutons 1/3/6/12 mois
   window.addEventListener("keepo:lang", function(){ setPlan(selM); });
   setPlan(1);
 
