@@ -4203,6 +4203,10 @@
     }
 
     function showSubscriptionGate() {
+        // Version DZ : offre unique, sans essai ni mur d'abonnement Stripe.
+        // Un nouveau commerçant accède directement au dashboard.
+        return;
+        /* eslint-disable no-unreachable */
         if (document.getElementById('subscription-gate')) return;
         const ov = document.createElement('div');
         ov.id = 'subscription-gate';
