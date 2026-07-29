@@ -4,11 +4,19 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(self), microphone=()
 
+# Fichiers de config (choix de la base Supabase) : jamais en cache,
+# sinon un ancien fichier peut faire pointer l'app vers la mauvaise base.
+/js/supabase-config.js
+  Cache-Control: no-store, must-revalidate
+
+/js/config.js
+  Cache-Control: no-store, must-revalidate
+
 /css/*
   Cache-Control: public, max-age=604800
 
 /js/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=3600
 
 /img/*
   Cache-Control: public, max-age=2592000
