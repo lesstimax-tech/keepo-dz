@@ -244,9 +244,10 @@
             background: linear-gradient(135deg, var(--card-color1, var(--violet)), var(--card-color2, var(--cyan)));
             display: flex; align-items: center; justify-content: center;
             font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 800;
-            color: white; flex-shrink: 0;
+            color: white; flex-shrink: 0; overflow: hidden;
             box-shadow: 0 4px 14px var(--card-glow, var(--violet-glow));
         }
+        .card-logo-chip img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
         .card-points-block { text-align: right; }
         .card-points-num {
             font-family: 'Bricolage Grotesque', sans-serif;
@@ -1930,12 +1931,13 @@
         let rewardGoals  = {}; // merchantId → points du 1er palier
         let cardDesigns  = {}; // merchantId → { title, color, studio_json }
         let merchantPlans = {}; // merchantId → plan ('essential' | 'pro' | ...)
+        let merchantLogos = {}; // merchantId → avatar_url (base64) — photo de profil du commerçant
 
         if (walletCache.length > 0) {
             const merchantIds = walletCache.map(c => c.merchant_id);
 
             // Lecture du plan via RPC SECURITY DEFINER (contourne le RLS de profiles)
-            const [rewardsRes, cardsRes, boutiquesRes, plansRes] = await Promise.all([
+            const [rewardsRes, cardsRes, boutiquesRes, plansRes, logosRes] = await Promise.all([
                 supabaseClient
                     .from('rewards')
                     .select('merchant_id, points_required')
@@ -1952,7 +1954,9 @@
                     .eq('is_active', true)
                     .order('created_at', { ascending: true }),
                 supabaseClient
-                    .rpc('get_merchant_plans', { p_merchant_ids: merchantIds })
+                    .rpc('get_merchant_plans', { p_merchant_ids: merchantIds }),
+                supabaseClient
+                    .rpc('get_merchant_logos', { p_merchant_ids: merchantIds })
             ]);
 
             if (rewardsRes.data) {
@@ -1968,6 +1972,9 @@
             }
             if (plansRes.data) {
                 plansRes.data.forEach(p => { merchantPlans[p.merchant_id] = p.plan || 'essential'; });
+            }
+            if (logosRes && logosRes.data) {
+                logosRes.data.forEach(m => { if (m.avatar_url) merchantLogos[m.merchant_id] = m.avatar_url; });
             }
             // Boutiques : grouper par merchant_id
             merchantBoutiquesMap = {};
@@ -2140,7 +2147,7 @@
                     ${overlayEl}
                     <div style="position:relative;z-index:1;">
                         <div class="card-top">
-                            <div class="card-logo-chip">${initial}</div>
+                            <div class="card-logo-chip">${merchantLogos[card.merchant_id] ? `<img src="${merchantLogos[card.merchant_id]}" alt="">` : initial}</div>
                             <div class="card-points-block">
                                 <div class="card-points-num" style="color:${cardColor}">${isStampMode ? `${Math.min(points,stampGoal)}/${stampGoal}` : points}</div>
                                 <div class="card-points-lbl">${isStampMode ? 'Tampons' : 'Points'}</div>

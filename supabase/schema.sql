@@ -1070,6 +1070,23 @@ $$;
 
 grant execute on function public.get_merchant_plans(uuid[]) to authenticated, anon;
 
+-- Logo/photo de profil public d'un commerçant, exposé aux clients pour l'afficher
+-- sur leur carte de fidélité. SECURITY DEFINER pour contourner le RLS de profiles,
+-- mais ne renvoie QUE l'avatar (pas email/anniversaire/etc.) → aucune fuite de données.
+create or replace function public.get_merchant_logos(p_merchant_ids uuid[])
+returns table(merchant_id uuid, avatar_url text)
+language sql
+security definer
+stable
+set search_path = public
+as $$
+  select id as merchant_id, avatar_url
+  from public.profiles
+  where id = any(p_merchant_ids);
+$$;
+
+grant execute on function public.get_merchant_logos(uuid[]) to authenticated, anon;
+
 -- ════════════════════════════════════════════════════════
 --  PHASE 7 — Pages publiques commerçants (/c/[slug])
 -- ════════════════════════════════════════════════════════
