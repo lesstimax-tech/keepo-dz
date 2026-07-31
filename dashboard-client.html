@@ -1797,6 +1797,22 @@
             splashRedirect('/connexion');
             return;
         }
+
+        // ── Code 1×/mois : appareil de confiance (30 jours) ──
+        // Session active mais délai dépassé → on redemande le code.
+        // Session pré-existante sans marqueur → grâce (on démarre le compteur).
+        if (window.KEEPO_AUTH) {
+            const _st = window.KEEPO_AUTH.state(session.user.email);
+            if (_st === 'expired') {
+                const pendingJoin = new URLSearchParams(window.location.search).get('join');
+                if (pendingJoin) sessionStorage.setItem('KEEPO_pending_join', pendingJoin);
+                await supabaseClient.auth.signOut().catch(() => {});
+                splashRedirect('/connexion');
+                return;
+            }
+            if (_st === 'none') window.KEEPO_AUTH.trust(session.user.email);
+        }
+
         currentClientId = session.user.id;
 
         // Affichage cached avatar AVANT le fetch DB pour rendu instantané
@@ -2285,7 +2301,7 @@
     // ─── SCAN LOGIC ───
     async function handleStoreQrCodeScanned(qrData) {
         // QR « URL universelle » (nouveau format de comptoir) :
-        // https://keepo.eu/dashboard-client?join={merchant_id}
+        // https://keepo-dz.com/dashboard-client?join={merchant_id}
         // — le même QR fonctionne à l'appareil photo ET dans ce scanner.
         if (/^https?:\/\//i.test(qrData) && qrData.includes('join=')) {
             let joinId = null;

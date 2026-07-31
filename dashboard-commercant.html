@@ -2985,7 +2985,7 @@
                 <div style="margin-bottom:16px;">
                     <label class="ob-field-label"><i class="fa-solid fa-mobile-screen-button" style="margin-right:4px;"></i>Lien Portefeuille Client</label>
                     <div style="display:flex;gap:8px;align-items:center;">
-                        <input class="ob-input" id="ob-share-link" style="margin-bottom:0;font-size:13px;flex:1;" readonly value="https://keepo.eu/dashboard-client">
+                        <input class="ob-input" id="ob-share-link" style="margin-bottom:0;font-size:13px;flex:1;" readonly value="https://keepo-dz.com/dashboard-client">
                         <button onclick="obCopyLink('ob-share-link','Lien client copié !')" style="flex-shrink:0;padding:12px 16px;background:rgba(14,124,140,0.1);border:1px solid rgba(14,124,140,0.3);border-radius:12px;color:var(--secondary-accent);cursor:pointer;font-size:14px;transition:all .2s;" title="Copier">
                             <i class="fa-solid fa-copy"></i>
                         </button>
@@ -2997,7 +2997,7 @@
                 <div style="margin-bottom:24px;">
                     <label class="ob-field-label"><i class="fa-solid fa-cash-register" style="margin-right:4px;"></i>Lien Terminal de Caisse</label>
                     <div style="display:flex;gap:8px;align-items:center;">
-                        <input class="ob-input" id="ob-caisse-link" style="margin-bottom:0;font-size:13px;flex:1;" readonly value="https://keepo.eu/caisse">
+                        <input class="ob-input" id="ob-caisse-link" style="margin-bottom:0;font-size:13px;flex:1;" readonly value="https://keepo-dz.com/caisse">
                         <button onclick="obCopyLink('ob-caisse-link','Lien caisse copié !')" style="flex-shrink:0;padding:12px 16px;background:rgba(91,58,160,0.1);border:1px solid rgba(91,58,160,0.3);border-radius:12px;color:var(--tertiary-accent);cursor:pointer;font-size:14px;transition:all .2s;" title="Copier">
                             <i class="fa-solid fa-copy"></i>
                         </button>
@@ -3222,6 +3222,11 @@
         if (typeof supabaseClient !== 'undefined' && supabaseClient.auth) {
             const { data: { session }, error } = await supabaseClient.auth.getSession();
             if (error || !session) { window.location.href = '/connexion'; return; }
+
+            // ── Code 1×/mois : appareil de confiance (30 jours). Passé ce délai,
+            //    déconnexion + retour à /connexion pour ressaisir le code. ──
+            if (window.KEEPO_AUTH && !(await window.KEEPO_AUTH.guardOrRedirect(session))) return;
+
             currentMerchantId = session.user.id;
 
             // ── Thème personnalisé maintenant qu'on connaît l'ID ──
@@ -3657,7 +3662,7 @@
         if (!slug && nameEl?.value.trim()) slug = generateSlug(nameEl.value.trim());
         const urlEl  = document.getElementById('settings-public-url');
         const openBtn = document.getElementById('settings-public-open-btn');
-        const base   = 'https://keepo.eu';
+        const base   = 'https://keepo-dz.com';
         if (slug) {
             const fullUrl = `${base}/c/${slug}`;
             if (urlEl)   urlEl.value = fullUrl;
@@ -4041,7 +4046,7 @@
                 code = (Math.random().toString(16).slice(2, 10)).toUpperCase();
                 await supabaseClient.from('profiles').update({ referral_code: code }).eq('id', currentMerchantId);
             }
-            if (linkInput) linkInput.value = `https://keepo.eu/connexion?tab=register&ref=${code}`;
+            if (linkInput) linkInput.value = `https://keepo-dz.com/connexion?tab=register&ref=${code}`;
 
             // 2) Filleuls (via fonction sécurisée : renvoie leurs noms + statut).
             const { data: refs } = await supabaseClient.rpc('get_my_referrals');
@@ -4810,7 +4815,7 @@
     }
 
     function obShareNative() {
-        const url = 'https://keepo.eu/dashboard-client';
+        const url = 'https://keepo-dz.com/dashboard-client';
         const name = document.getElementById('ob-name')?.value?.trim() || 'notre programme';
         if (navigator.share) {
             navigator.share({ title: `Rejoignez ${name} sur KEEPO`, text: `Accumulez des points et profitez de récompenses exclusives !`, url });
@@ -4879,7 +4884,7 @@
         const progName = document.getElementById('ob-name').value.trim();
         document.getElementById('ob-success-name').innerText = progName;
         // Pré-remplir le lien WhatsApp de l'étape 4
-        const clientUrl = 'https://keepo.eu/dashboard-client';
+        const clientUrl = 'https://keepo-dz.com/dashboard-client';
         const waMsg = encodeURIComponent(`Rejoignez mon programme de fidélité "${progName}" sur KEEPO ! Accumulez des points et profitez de récompenses 🎁\n${clientUrl}`);
         const waBtn = document.getElementById('ob-whatsapp-btn');
         if (waBtn) waBtn.href = `https://wa.me/?text=${waMsg}`;

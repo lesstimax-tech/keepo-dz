@@ -7,4 +7,4 @@ Disallow: /validation.html
 Disallow: /upgrade.html
 Disallow: /connexion.html
 
-Sitemap: https://keepo.eu/sitemap.xml
+Sitemap: https://keepo-dz.com/sitemap.xml

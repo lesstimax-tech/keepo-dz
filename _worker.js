@@ -479,8 +479,8 @@ async function handleStripeCheckout(request, env) {
     } catch { /* en cas de doute : pas d'essai (sécurité avant générosité) */ }
   }
 
-  const successUrl = (returnUrl || 'https://keepo.eu/dashboard-commercant') + '?stripe=success&session_id={CHECKOUT_SESSION_ID}';
-  const cancelUrl  = (returnUrl || 'https://keepo.eu/dashboard-commercant') + '?stripe=cancel';
+  const successUrl = (returnUrl || 'https://keepo-dz.com/dashboard-commercant') + '?stripe=success&session_id={CHECKOUT_SESSION_ID}';
+  const cancelUrl  = (returnUrl || 'https://keepo-dz.com/dashboard-commercant') + '?stripe=cancel';
 
   const sessionParams = {
     'mode'                   : 'subscription',
@@ -715,7 +715,7 @@ function resendFromAddress(env) {
   const m = raw.match(/<([^>]+)>/);
   if (m) return m[1].trim();
   if (raw.includes('@')) return raw;
-  return 'notifications@keepo.eu';
+  return 'notifications@keepo-dz.com';
 }
 function merchantSender(merchantName, env) {
   const safe = String(merchantName || 'KEEPO').replace(/["<>\r\n]/g, '').trim() || 'KEEPO';
@@ -732,7 +732,7 @@ function linkifyMail(escaped) {
 }
 function buildBrandedEmailHtml({ bodyText, merchantName, merchantId, ctaUrl, ctaLabel }) {
   const safeName = escapeHtmlMail(merchantName || 'Votre commerce');
-  const logoUrl  = `https://keepo.eu/logo/${merchantId}`;
+  const logoUrl  = `https://keepo-dz.com/logo/${merchantId}`;
   const htmlBody = String(bodyText).split(/\n\n+/)
     .map(p => `<p style="margin:0 0 12px 0;">${linkifyMail(escapeHtmlMail(p)).replace(/\n/g, '<br>')}</p>`)
     .join('\n');
@@ -766,7 +766,7 @@ function buildBrandedEmailHtml({ bodyText, merchantName, merchantId, ctaUrl, cta
         <tr>
           <td style="padding:16px 36px 22px;background:#FAFAFC;font-size:11px;color:#A6A4B2;text-align:center;border-top:1px solid #EFEFF4;">
             Vous recevez cet e-mail car vous êtes membre du programme de fidélité de
-            <strong style="color:#6B6A78;">${safeName}</strong>, propulsé par <a href="https://keepo.eu" style="color:#0E7C8C;text-decoration:none;font-weight:bold;">KEEPO</a>.
+            <strong style="color:#6B6A78;">${safeName}</strong>, propulsé par <a href="https://keepo-dz.com" style="color:#0E7C8C;text-decoration:none;font-weight:bold;">KEEPO</a>.
           </td>
         </tr>
       </table>
@@ -948,7 +948,7 @@ async function handleGeocode(request, env) {
   try {
     const r = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&limit=1&addressdetails=1&q=${encodeURIComponent(q)}`,
-      { headers: { 'User-Agent': 'KEEPO/1.0 (https://keepo.eu; contact@keepo.eu)', 'Accept': 'application/json' } }
+      { headers: { 'User-Agent': 'KEEPO/1.0 (https://keepo-dz.com; contact@keepo-dz.com)', 'Accept': 'application/json' } }
     );
     if (!r.ok) return json({ error: 'Service de localisation indisponible' }, 502);
     const arr = await r.json();

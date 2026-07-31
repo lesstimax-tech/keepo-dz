@@ -386,9 +386,8 @@ button:focus-visible,input:focus-visible{outline:2px solid rgba(22,184,196,.55);
             <a class="mini-link" onclick="sendResetPassword()">Mot de passe oublié ?</a>
           </div>
           <button type="submit" class="btn-main" id="loginBtn"><span class="spinner"></span>Se connecter</button>
-          <p style="display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;color:var(--muted);margin-top:12px;">
-            <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:var(--teal-deep);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
-            Connexion protégée par vérification en 2 étapes
+          <p class="switch-hint" style="margin-top:14px;">
+            <a onclick="showOtpMode()">← Recevoir plutôt un code par e-mail</a>
           </p>
         </div>
 
@@ -402,7 +401,7 @@ button:focus-visible,input:focus-visible{outline:2px solid rgba(22,184,196,.55);
                    style="text-align:center;letter-spacing:8px;font-size:22px;font-weight:700;font-family:var(--font-d);">
           </div>
           <p id="otpHint" style="font-size:12.5px;color:var(--muted);margin:-4px 0 14px;line-height:1.5;">
-            Un code de connexion à usage unique va être envoyé à votre adresse e-mail.
+            Recevez un code par e-mail. Cet appareil sera ensuite <strong>mémorisé 1 mois</strong> — connexion automatique, sans code à ressaisir.
           </p>
           <button type="button" class="btn-main" id="otpBtn" onclick="otpAction()"><span class="spinner"></span>Recevoir mon code</button>
           <p class="switch-hint" style="margin-top:14px;">
@@ -469,27 +468,30 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (typeof supabaseClient !== 'undefined' && supabaseClient.auth) {
         const { data: { session } } = await supabaseClient.auth.getSession();
         if (session) {
-            const { data: profile } = await supabaseClient.from('profiles').select('role').eq('id', session.user.id).maybeSingle();
-            const userRole = profile ? profile.role : 'client';
-            document.getElementById('mainAuthBlock').innerHTML = `
-                <div style="text-align:center;padding:8px 0;">
-                    <div class="verify-icon" style="font-size:30px;">👋</div>
-                    <h2 class="auth-title">Vous êtes déjà connecté</h2>
-                    <p class="auth-sub">Votre session est active et sécurisée.</p>
-                    <button onclick="redirectUser('${userRole}')" class="btn-main" style="margin-top:6px;">Accéder à mon espace →</button>
-                    <button onclick="forceLogout()" class="pm-cancel">Me déconnecter et changer de compte</button>
-                </div>`;
+            const email = session.user && session.user.email;
+            const st = window.KEEPO_AUTH.state(email);
+            if (st === 'expired') {
+                // Le code mensuel est dû : on ferme la session locale et on
+                // laisse la page de connexion (mode code) s'afficher normalement.
+                await supabaseClient.auth.signOut({ scope: 'local' }).catch(() => {});
+            } else {
+                // Appareil de confiance (ou session pré-existante) → accès automatique.
+                if (st === 'none') window.KEEPO_AUTH.trust(email);
+                const { data: profile } = await supabaseClient.from('profiles').select('role').eq('id', session.user.id).maybeSingle();
+                redirectUser(profile ? profile.role : 'client');
+                return;
+            }
         }
     }
 
+    // Connexion par CODE par défaut (le mot de passe reste disponible en option).
+    showOtpMode();
+
     // Pré-remplit le dernier e-mail utilisé (re-connexion plus rapide)
     try {
-        const last = localStorage.getItem('KEEPO_last_email');
+        const last = window.KEEPO_AUTH.lastEmail();
         const emailField = document.getElementById('login-email');
-        if (last && emailField && !emailField.value) {
-            emailField.value = last;
-            document.getElementById('login-password')?.focus();
-        }
+        if (last && emailField && !emailField.value) emailField.value = last;
     } catch (_) {}
 
     // ?tab=register pour arriver directement sur l'inscription
@@ -667,19 +669,18 @@ function startVerificationWatcher(role) {
 // ─── Appareil de confiance ───
 // Après une 2FA réussie, on mémorise l'appareil 30 jours : plus de code à
 // saisir à chaque connexion sur ce téléphone/ordinateur (comportement banque).
-function _trustKey(email){ return 'KEEPO_trust_' + (email||'').toLowerCase().trim(); }
-function isDeviceTrusted(email){
-    try { return Number(localStorage.getItem(_trustKey(email)) || 0) > Date.now(); }
-    catch { return false; }
-}
-function trustDevice(email){
-    try { localStorage.setItem(_trustKey(email), String(Date.now() + 30*24*3600*1000)); } catch {}
-}
-function rememberEmail(email){ try { localStorage.setItem('KEEPO_last_email', (email||'').trim()); } catch {} }
+// Délègue au module partagé (js/supabase-config.js → window.KEEPO_AUTH).
+function isDeviceTrusted(email){ return window.KEEPO_AUTH.isTrusted(email); }
+function trustDevice(email){ window.KEEPO_AUTH.trust(email); }
+function rememberEmail(email){ window.KEEPO_AUTH.rememberEmail(email); }
 
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    if (document.getElementById('otpPanel').style.display !== 'none') return; // mode code actif
+    if (document.getElementById('otpPanel').style.display !== 'none') {
+        // Mode code actif : Entrée = demander (ou valider) le code.
+        if (!otpBusy) otpAction();
+        return;
+    }
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
     if (!email || !password) { showToast('Renseignez votre e-mail et votre mot de passe.'); return; }
@@ -767,7 +768,7 @@ function showOtpMode() {
     document.getElementById('otpResendLink').style.display = 'none';
     document.getElementById('otpResendSep').style.display = 'none';
     document.getElementById('otpBtn').innerHTML = '<span class="spinner"></span>Recevoir mon code';
-    lockEmailField(true);
+    lockEmailField(false); // l'e-mail reste modifiable tant que le code n'est pas envoyé
 }
 function showPasswordMode() {
     document.getElementById('otpPanel').style.display = 'none';
@@ -805,6 +806,7 @@ async function otpAction() {
             });
             if (error) throw error;
             otpStage = 'verify';
+            lockEmailField(true); // le code a été envoyé à CETTE adresse : on la fige
             document.getElementById('otpCodeGroup').style.display = 'block';
             document.getElementById('otpHint').style.display = 'none';
             document.getElementById('otpResendLink').style.display = 'inline';
