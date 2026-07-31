@@ -395,7 +395,7 @@ button:focus-visible,input:focus-visible{outline:2px solid rgba(22,184,196,.55);
         <div id="otpPanel" style="display:none;">
           <div id="otpCodeGroup" class="form-group" style="display:none;">
             <label for="otp-code">Code reçu par e-mail</label>
-            <input type="text" id="otp-code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="••••••"
+            <input type="text" id="otp-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••"
                    oninput="handleOtpInput(this)"
                    onkeydown="if(event.key==='Enter'){event.preventDefault(); if(otpStage==='verify'&&!otpBusy) otpAction();}"
                    style="text-align:center;letter-spacing:8px;font-size:22px;font-weight:700;font-family:var(--font-d);">
@@ -777,14 +777,12 @@ function showPasswordMode() {
 }
 let otpBusy = false;
 let otpAutoTimer = null;
-// Filtre les chiffres et auto-valide une fois que l'utilisateur a fini de taper.
-// Temporisé (650 ms après la dernière frappe) → fonctionne que le code fasse
-// 6 chiffres ou davantage, sans jamais le couper.
+// Filtre les chiffres et auto-valide dès que le code à 6 chiffres est saisi.
 function handleOtpInput(el) {
     el.value = el.value.replace(/\D/g, '');
     clearTimeout(otpAutoTimer);
-    if (el.value.length >= 6 && otpStage === 'verify' && !otpBusy) {
-        otpAutoTimer = setTimeout(() => { if (!otpBusy) otpAction(); }, 650);
+    if (el.value.length === 6 && otpStage === 'verify' && !otpBusy) {
+        otpAutoTimer = setTimeout(() => { if (!otpBusy) otpAction(); }, 250);
     }
 }
 async function otpAction() {
